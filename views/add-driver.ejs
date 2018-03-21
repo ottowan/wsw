@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include /partials/head %>
+</head>
+
+<body class="body-wrapper">
+    <div class="page-loader" style="background: url(img/preloader.gif) center no-repeat #fff;"></div>
+    <div class="main-wrapper">
+        <!-- HEADER -->
+        <header id="pageTop" class="header">
+            <% include /partials/header %>
+        </header>
+
+
+        <!-- DASHBOARD ORDERS SECTION -->
+        <section class="clearfix bg-dark listingSection">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <form action="/add-driver" method="post" class="listing__form">
+                            <input type="hidden" class="form-control" id="listingAddress" placeholder="จำนวนคัน" name="partner" value="1">
+                            <!--input type="hidden" class="form-control" id="listingAddress" placeholder="จำนวนคัน" name="partner" value="<%= req.session.partner %>"-->
+
+                            <div class="dashboardPageTitle text-center">
+                                <h2>เพิ่มละเอียดคนขับ</h2>
+                            </div>
+
+                            <div class="dashboardBoxBg mb30">
+                                <div class="profileIntro paraMargin">
+                                    <div class="row">
+
+                                        <div class="form-group col-sm-6 col-xs-12">
+                                            <label for="firstname" class="control-label">ชื่อคนขับรถ*</label>
+                                            <input type="text" class="form-control" name="firstname" id="firstname" required>
+                                        </div>
+
+                                        <div class="form-group col-sm-6 col-xs-12">
+                                            <label for="lastName" class="control-label">นามสุกล*</label>
+                                            <input type="text" class="form-control" name="lastName" id="lastName" required>
+                                        </div>
+
+                                        <div class="form-group col-sm-6 col-xs-12">
+                                            <label for="personal_id" class="control-label">เลขบัตรประชาชน*</label>
+                                            <input type="text" class="form-control" name="personal_id" id="personal_id">
+                                        </div>
+                                        <div class="form-group col-sm-6 col-xs-12">
+                                            <label for="car_license_id" class="control-label">ใบขับขี่ฉบับบที่*</label>
+                                            <input type="text" class="form-control" name="car_license_id" id="car_license_id">
+                                        </div>
+                                        <div class="form-group col-xs-12">
+                                            <label for="address" class="control-label">ที่อยู่*</label>
+                                            <input type="address" class="form-control" name="address" id="address" required>
+                                        </div>
+                                        <div class="form-group col-sm-6 col-xs-12">
+                                            <label for="tambon" class="control-label">ตำบล/แขวง*</label>
+                                            <input type="text" class="form-control" name="tambon" id="tambon" required>
+                                        </div>
+
+                                        <div class="form-group col-sm-6 col-xs-12">
+                                            <label for="district" class="control-label">อำเภอ/เขต*</label>
+                                            <input type="text" class="form-control" name="district" id="district" required>
+                                        </div>
+                                        <div class="form-group col-sm-6 col-xs-12">
+                                            <label for="province" class="control-label">จังหวัด*</label>
+
+                                            <select name="province" class="form-control" required>
+                                                <% provinces.forEach(function(province) { %>
+                                                    <option value="<%= province.id %>">
+                                                        <%= province.name %>
+                                                    </option>
+                                                    <% }); %>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group col-sm-6 col-xs-12">
+                                            <label for="lastName" class="control-label">รหัสไปรษณีย์*</label>
+                                            <input type="text" class="form-control" name="postcode" id="postcode" required>
+                                        </div>
+                                        <div class="form-group col-sm-6 col-xs-12">
+                                            <label for="lastName" class="control-label">อีเมลล์*</label>
+                                            <input type="text" class="form-control" name="email" id="email" required>
+                                        </div>
+                                        <div class="form-group col-sm-6 col-xs-12">
+                                            <label for="lastName" class="control-label">เบอร์มือถือ*</label>
+                                            <input type="text" class="form-control" name="mobile" id="mobile" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-footer text-center">
+                                    <button type="submit" class="btn-submit">Submit</button>
+                                </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+
+
+        <!-- FOOTER -->
+        <footer class="copyRightDashboard">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p>Copyright Â© 2016. All Rights Reserved</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        </div>
+
+        <!-- JAVASCRIPTS -->
+        <script src="plugins/jquery/jquery.min.js"></script>
+        <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+        <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+        <script src="plugins/smoothscroll/SmoothScroll.min.js"></script>
+        <script src="plugins/waypoints/waypoints.min.js"></script>
+        <script src="plugins/counter-up/jquery.counterup.min.js"></script>
+        <script src="plugins/datepicker/bootstrap-datepicker.min.js"></script>
+        <script src="plugins/selectbox/jquery.selectbox-0.1.3.min.js"></script>
+        <script src="plugins/rwdtable/js/rwd-table.min.js"></script>
+        <script src="plugins/owl-carousel/owl.carousel.min.js"></script>
+        <script src="plugins/isotope/isotope.min.js"></script>
+        <script src="plugins/fancybox/jquery.fancybox.pack.js"></script>
+        <script src="plugins/isotope/isotope-triger.min.js"></script>
+
+        <script src="javascript/custom.js"></script>
+
+
+</body>
+
+</html>
