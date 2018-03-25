@@ -28,7 +28,8 @@
     "sails": "^0.12.14",
     "sails-disk": "~0.10.9",
     "sails-mysql": "^0.11.5",
-    "async": "5.8.0"
+    "async": "2.6.0"
+"
   },
   "scripts": {
     "debug": "node debug app.js",
