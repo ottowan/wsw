@@ -177,9 +177,11 @@
 					lon6: $("#lon6").val(),
 				};
 
+
+				alert(data.name)
 				$.post("/routes", data, function (res, status) {
 					//alert("Data: " + data + "\nStatus: " + status);
-					console.log(res)
+					console.log(status)
 					if (status == "success")
 						alert("บัันทึกข้อมูลเรียบร้อยแล้ว")
 					else

@@ -63,15 +63,15 @@ module.exports.routes = {
 
   //Partner Car
   'get /list-car': {
-    controller: 'partnercar',
+    controller: 'truck',
     action: 'find'
   },
   'post /add-car': {
-    controller: 'partnercar',
+    controller: 'truck',
     action: 'create'
   },
   'get /add-car': {
-    controller: 'partnercar',
+    controller: 'truck',
     action: 'index'
   },
 
@@ -80,10 +80,12 @@ module.exports.routes = {
     controller: 'driver',
     action: 'find'
   },
+
   'post /add-driver': {
     controller: 'driver',
     action: 'create'
   },
+
   'get /add-driver': {
     controller: 'driver',
     action: 'index'
@@ -96,18 +98,24 @@ module.exports.routes = {
   //   action: 'find'
   // },
   'post /routes': {
-    controller: 'routename',
+    controller: 'trip',
     action: 'create'
   },
   'get /route': {
-    controller: 'routename',
+    controller: 'trip',
     action: 'index'
   },
   'get /routes': {
-    controller: 'routename',
+    controller: 'trip',
     action: 'index'
   },
 
+  'post /search/:start/:end': {
+    controller: 'trip',
+    action: 'find'
+  },
+
+  
   // '/list-route': { view: 'list-route' },
   // '/add-route': { view: 'add-route' },
   // '/edit-route': { view: 'edit-route' },

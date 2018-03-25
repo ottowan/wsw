@@ -38,7 +38,7 @@ module.exports = {
 
 
   create: function (req, res) {
-    PartnerCar.create({
+    Truck.create({
       cartype: req.param('cartype'),
       partner: req.param('partner'),
       province: req.param('province'),
@@ -61,7 +61,7 @@ module.exports = {
 
   find: function (req, res) {
     join = ['province', 'cartype']
-    PartnerCar.find().populate(join).sort('createdAt ASC').exec(function (err, data) {
+    Truck.find().populate(join).sort('createdAt ASC').exec(function (err, data) {
 
       //console.log(data)
       responses = { partnercars : data}

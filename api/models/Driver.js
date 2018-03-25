@@ -61,8 +61,8 @@ module.exports = {
     partner: {
       model: 'partner'
     },
-    partnercar: {
-      model: 'partnercar'
+    truck: {
+      model: 'truck'
     },
   }
 };

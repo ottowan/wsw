@@ -70,7 +70,7 @@ module.exports = {
   },
 
   find: function (req, res) {
-    join = ['province', 'partnercar']
+    join = ['province', 'truck']
     Driver.find().populate(join).sort('createdAt ASC').exec(function (err, data) {
 
       console.log(err)

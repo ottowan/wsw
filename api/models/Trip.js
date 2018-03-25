@@ -1,31 +1,37 @@
 /**
- * PartnerCar.js
+ * Route.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 
+
 module.exports = {
   connection: 'wswMysqlServer',
-  tableName: 'partnercar',
+  tableName: 'trip',
   attributes: {
+    id: {
+      type: 'int',
+      unique: true,
+      primaryKey: true,
+      columnName: 'id',
+      autoIncrement: true
+    },
+    rating: {
+      type: 'float',
+      columnName: 'rating'
+    },
     partner: {
       model: 'partner'
     },
     cartype: {
       model: 'cartype'
     },
-    province: {
-      model: 'province'
+    driver: {
+      model: 'driver'
     },
-    name: {
-      type: 'string',
-      columnName: 'name'
-    },
-    plate_no: {
-      type: 'string',
-      columnName: 'plate_no'
-    },
+    truck: {
+      model: 'truck'
+    }
   }
 };
-

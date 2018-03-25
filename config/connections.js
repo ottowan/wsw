@@ -65,6 +65,14 @@ module.exports.connections = {
     timezone: 'utc'
   },
 
+  wswMysqlServerHeroku: {
+    adapter: 'sails-mysql',
+    host: 'a07yd3a6okcidwap.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+    user: 'vw4foujoeqvv5ao3', //optional
+    password: 'bdxktjda4j8rdnmi', //optional
+    database: 'n4uo37uxkjoj38r3', //optional
+    timezone: 'utc'
+  },
   /***************************************************************************
   *                                                                          *
   * MongoDB is the leading NoSQL database.                                   *
