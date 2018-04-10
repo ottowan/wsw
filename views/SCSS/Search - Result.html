@@ -1,0 +1,671 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- SITE TITTLE -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home We Same Way</title>
+
+    <!-- PLUGINS CSS STYLE -->
+    <link href="plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+    <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="plugins/listtyicons/style.css" rel="stylesheet">
+    <link href="plugins/bootstrapthumbnail/bootstrap-thumbnail.css" rel="stylesheet">
+    <link href="plugins/datepicker/datepicker.min.css" rel="stylesheet">
+    <link href="plugins/selectbox/select_option1.css" rel="stylesheet">
+    <link href="plugins/owl-carousel/owl.carousel.min.css" rel="stylesheet">
+    <link href="plugins/fancybox/jquery.fancybox.pack.css" rel="stylesheet">
+    <link href="plugins/isotope/isotope.min.css" rel="stylesheet">
+    <link href="plugins/map/css/map.css" rel="stylesheet">
+
+    <!-- GOOGLE FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:200,300,400,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff" rel="stylesheet">
+
+    <!-- CUSTOM CSS -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- FAVICON -->
+    <link href="img/favicon.png" rel="shortcut icon">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body class="body-wrapper" onload="showmarker()">
+    <div class="page-loader"  style="background: url(img/preloader.gif) center no-repeat #fff;"></div>
+    <div class="main-wrapper">
+        <!-- HEADER -->
+        <header id="pageTop" class="header">
+
+            <!-- TOP INFO BAR -->
+
+            <div class="nav-wrapper navbarWhite">
+
+                <div class="container-fluid header-bg">
+                    <div class="row">
+                        <div class="col-lg-4 col-sm-4 col-xs-6 header-left empty">
+                            empty
+                        </div>
+                        <div class="col-lg-8 col-sm-8 col-xs-6 header-right empty">
+                            empty
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NAVBAR -->
+              
+                <nav id="menuBar" class="navbar navbar-default lightHeader" role="navigation">
+                    <div class="container">
+
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="index.html"><img src="img/WeSameWay Logo.png" alt="logo"></a>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+                            <ul class="nav navbar-nav navbar-right">
+
+                                <li class="active"><a href="search.html" style="font-weight:bolder">ค้นหารถ</a></li>
+                                <li class=""><a href="sign-up.html" style="font-weight:bolder">สมัครเป็นพาร์ทเนอร์</a></li>
+                                <li class="dropdown singleDrop">
+                                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="font-weight:bolder">เข้าสู่ระบบ <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="customer-login.html">สมาชิก</a></li>
+                                        <li><a href="partner-login.html">พาร์ทเนอร์</a></li>
+                                    </ul>
+                                </li>
+                                <!--<li class=""><a href="login.html" style="font-weight:bolder;font-size:large">เข้าสู่ระบบ</a></li>-->
+                                <li class=""><a href="how-it-works.html" style="font-weight:bolder">วิธีใช้งาน</a></li>
+
+                            </ul>
+                        </div>
+                       
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <div class="col-md-4" >
+            <!--<div class="dashboardPageTitle text-center">
+                <h2>ค้นหารถ</h2>
+            </div>-->
+            
+                <div class="dashboardBoxBg mb30">
+                    <div class="profileIntro">
+                        <div class="row">
+                            <div class="col-sm-12 col-xs-12">
+                                <div class="panel panel-default panel-card">
+                                    <div class="panel-heading" style="font-weight:bold;color:deepskyblue">
+                                        รถที่วิ่งผ่านทางเดียวกับคุณ<!--<span class="label label-primary"> </span>-->
+                                    </div>
+                                    <div class="panel-body plr">
+                                        <ul class="list-unstyled panel-list">
+                                            <li>
+                                                <div class="listWrapper">
+                                                    <div class="listName">
+                                                        <a href="booking.html"><h3>TFT Transport<small>กรุงเทพ - พะเยา</small></h3></a>
+                                                    </div>
+                                                    <div class="listResult">
+                                                        <ul class="list-inline rating">
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+
+                                                        </ul>
+                                                        <span class="likePart"><i class="fa fa-car primaryColor" aria-hidden="true"></i>วิ่งทุกวัน จันทร์</span>
+                                                        <span class="likeResult">ราคา: <strong>2,000 บาท</strong></span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="listWrapper">
+                                                    <div class="listName">
+                                                        <a href="booking.html"><h3>Meechoke Transport<small>กรุงเทพ - เชียงใหม่</small></h3></a>
+                                                    </div>
+                                                    <div class="listResult">
+                                                        <ul class="list-inline rating">
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+
+                                                        </ul>
+                                                        <span class="likePart"><i class="fa fa-car primaryColor" aria-hidden="true"></i>วิ่งทุกวัน จันทร์</span>
+                                                        <span class="likeResult">ราคา: <strong>4,000 บาท</strong></span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="listWrapper">
+                                                    <div class="listName">
+                                                        <a href="booking.html"><h3>Moomove<small>กรุงเทพ - เชียงใหม่</small></h3></a>
+                                                    </div>
+                                                    <div class="listResult">
+                                                        <ul class="list-inline rating">
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                         
+                                                        </ul>
+                                                        <span class="likePart"><i class="fa fa-car primaryColor" aria-hidden="true"></i>10k</span>
+                                                        <span class="likeResult">ราคา: <strong>4,000 บาท</strong></span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="listWrapper">
+                                                    <div class="listName">
+                                                        <a href="booking.html"><h3>IT Transport<small>กรุงเทพ - พะเยา</small></h3></a>
+</div>
+                                                    <div class="listResult">
+                                                        <ul class="list-inline rating">
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                        </ul>
+                                                        <span class="likePart"><i class="fa fa-heart-o primaryColor" aria-hidden="true"></i>10k</span>
+                                                        <span class="likeResult">ราคา: <strong>4,500 บาท</strong></span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="listWrapper">
+                                                    <div class="listName">
+                                                        <a href="booking.html"><h3>IT Transport<small>กรุงเทพ - พะเยา</small></h3></a>
+                                                    </div>
+                                                    <div class="listResult">
+                                                        <ul class="list-inline rating">
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            
+                                                        </ul>
+                                                        <span class="likePart"><i class="fa fa-car primaryColor" aria-hidden="true"></i>10k</span>
+                                                        <span class="likeResult">ราคา: <strong>4,500 บาท</strong></span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="listWrapper">
+                                                    <div class="listName">
+                                                        <a href="booking.html"><h3>IT Transport<small>กรุงเทพ - พะเยา</small></h3></a>
+                                                    </div>
+                                                    <div class="listResult">
+                                                        <ul class="list-inline rating">
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                        </ul>
+                                                        <span class="likePart"><i class="fa fa-heart-o primaryColor" aria-hidden="true"></i>10k</span>
+                                                        <span class="likeResult">ราคา: <strong>4,500 บาท</strong></span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+</div>
+                </div>
+            </div>
+        </div>
+        <!-- MAP SECTION -->
+        <section class="clearfix p0 col-sm-8">
+            <div id="map-canvas"></div>
+        </section>
+
+
+
+
+
+    
+        <!-- FOOTER -->
+        <footer class="footerWhite">
+            <!-- FOOTER INFO -->
+            <div class="clearfix footerInfo">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-7 col-xs-12">
+                            <div class="footerText">
+                                <a href="index.html" class="footerLogo"><img src="img/logo-blue.png" alt="Footer Logo"></a>
+                                <p> ถูกกว่า สะดวกกว่า สินค้าปลอดภัย</p>
+                                <ul class="list-styled list-contact">
+                                    <li><i class="fa fa-phone" aria-hidden="true"></i>[88] 657 524 332</li>
+                                    <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="#">info@wesameway.com</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-xs-12">
+                            <div class="footerInfoTitle">
+                                <h4>Links</h4>
+                            </div>
+                            <div class="useLink">
+                                <ul class="list-unstyled">
+                                    <li><a href="dashboard.html">หน้าสมาชิก</a></li>
+                                    <li><a href="sign-up.html">หน้าพาร์ทเนอร์</a></li>
+                                    <li><a href="login.html">สมัครสมาชิก</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-2 col-xs-12">
+                            <div class="footerInfoTitle">
+                                <h4>Company</h4>
+                            </div>
+                            <div class="useLink">
+                                <ul class="list-unstyled">
+                                    <li><a href="contact-us.html">ติดต่อเรา</a></li>
+                                    <li><a href="terms-of-services.html">ข้อตกลงและเงื่อนไข</a></li>
+                                    <li><a href="how-it-works.html">การใช้งาน</a></li>
+                                    <li><a href="payment-process.html">การชำระเงิน</a></li>
+                                    <li><a href="pricing-table.html">เราแตกต่างจากที่อื่นอย่างไร</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- COPY RIGHT -->
+            <div class="clearfix copyRight">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="copyRightWrapper">
+                                <div class="row">
+                                    <div class="col-sm-5 col-sm-push-7 col-xs-12">
+                                        <ul class="list-inline socialLink">
+                                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-7 col-sm-pull-5 col-xs-12">
+                                        <div class="copyRightText">
+                                            <p>Copyright &copy; 2017. All Rights Reserved by <a href="http://www.wesameway.com/" target="_blank">We Same Way</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- LOGIN  MODAL -->
+    <div id="loginModal" tabindex="-1" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Log In to your Account</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="loginForm">
+                        <div class="form-group">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <input type="email" class="form-control" id="email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                            <input type="password" class="form-control" id="pwd" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox"> Remember me</label>
+                            <a href="#" class="pull-right link">Fogot Password?</a>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <p>Don’t have an Account? <a href="#" class="link">Sign up</a></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JAVASCRIPTS -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="plugins/smoothscroll/SmoothScroll.min.js"></script>
+    <script src="plugins/waypoints/waypoints.min.js"></script>
+    <script src="plugins/counter-up/jquery.counterup.min.js"></script>
+    <script src="plugins/datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="plugins/selectbox/jquery.selectbox-0.1.3.min.js"></script>
+    <script src="plugins/owl-carousel/owl.carousel.min.js"></script>
+    <script src="plugins/isotope/isotope.min.js"></script>
+    <script src="plugins/fancybox/jquery.fancybox.pack.js"></script>
+    <script src="plugins/isotope/isotope-triger.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEDfNcQRmKQEyulDN8nGWjLYPm8s4YB58"></script>
+    <script src="plugins/map/js/rich-marker.js"></script>
+    <script src="plugins/map/js/infobox_packed.js"></script>
+    <!--<script src="js/map.js"></script>-->
+    <script src="js/custom.js"></script>
+    <script>
+var x = document.getElementById("demo");
+
+
+function showmarker() {
+    var Markers = {};
+    var infowindow;
+    var locations = [
+        [
+            'TT Transport',
+            '<strong>IT Transport</strong><p>55/382 ซอย นวมินทร์ 111 แยก 2 แขวง นวมินทร์ เขต บึงกุ่ม กรุงเทพมหานคร 10230<br>2000 บาท</p>',
+           13.7661407,
+           100.569537,
+            0
+        ],
+        [
+            'IT ขนส่ง',
+            '<strong>Moomove</strong><p>บางนา<br>www.facebook.com/moomove <br<br>2500 บาท</p>',
+            13.7583957,
+            100.5664216,
+            1
+
+        ],
+        [
+           'Meechock',
+           '<strong>MeeChock Transport</strong><p>รามอินทรา <br>1500 บาท</p>',
+          13.737174,
+          100.56053,
+           2
+    ],
+                [
+           'สี่พระยา',
+           '<strong>สี่พระยา ขนส่ง</strong><p>บางกะปิ<br>2500 บาท</p>',
+          13.753139,
+          100.570664,
+           3
+        ]
+
+    ];
+    // test sending data
+   var myObj = { "name": "John", "age": 31, "city": "New York" };
+    var myJSON = JSON.stringify(myObj);
+    localStorage.setItem("testJSON", myJSON);
+
+    var origin = new google.maps.LatLng(locations[0][2], locations[0][3]);
+
+  
+        var mapOptions = {
+            zoom: 14,
+            center: origin
+        };
+        var image = 'img/map/truck2.png';
+        var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+        infowindow = new google.maps.InfoWindow();
+
+        for (i = 0; i < locations.length; i++) {
+            var position = new google.maps.LatLng(locations[i][2], locations[i][3]);
+            var marker = new google.maps.Marker({
+                position: position,
+                icon: image,
+                animation: google.maps.Animation.DROP,
+                map: map,
+            });
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
+                    infowindow.setContent(locations[i][1]);
+                    infowindow.setOptions({ maxWidth: 200 });
+                    infowindow.open(map, marker);
+                    locate(i);
+                }
+            })(marker, i));
+            Markers[locations[i][4]] = marker;
+        }
+
+        var markerCluster = new MarkerClusterer(map, markers,
+       { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+    }
+
+    function locate(marker_id) {
+        var myMarker = Markers[marker_id];
+        var markerPosition = myMarker.getPosition();
+        map.setCenter(markerPosition);
+        google.maps.event.trigger(myMarker, 'click');
+    }
+
+   
+
+
+
+function showPosition() {
+    var map = new google.maps.Map(document.getElementById('map-canvas'), {
+        zoom: 14,
+        center: { lat: 13.7661407, lng: 100.569537 }
+    });
+    var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+    // Add some markers to the map.
+    // Note: The code uses the JavaScript Array.prototype.map() method to
+    // create an array of markers based on a given "locations" array.
+    // The map() method here has nothing to do with the Google Maps API.
+    var image = 'img/map/Marker.png';
+    var markers = locations.map(function(location, i) {
+        return new google.maps.Marker({
+            position: location,
+            icon: image,
+            animation: google.maps.Animation.DROP,
+            label: labels[i % labels.length],
+            infowindow:  'test',
+
+        });
+        markers.addListener('click', function (location, i) {
+            infowindow.open(map, markers);
+        });
+    });
+
+    // Add a marker clusterer to manage the markers.
+    var markerCluster = new MarkerClusterer(map, markers,
+        {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+}
+var locations = [
+    
+    {lat: 13.7661407, lng: 100.569537},
+        { lat: 13.7583957, lng: 100.5664216 },
+{ lat: 13.737174, lng: 100.56053 },
+{ lat: 13.753139, lng: 100.570664 },
+
+        
+  //{lat: -33.727111, lng: 150.371124},
+  //{lat: -33.848588, lng: 151.209834},
+  //{lat: -33.851702, lng: 151.216968},
+  //{lat: -34.671264, lng: 150.863657},
+  //{lat: -35.304724, lng: 148.662905},
+  //{lat: -36.817685, lng: 175.699196},
+  //{lat: -36.828611, lng: 175.790222},
+  //{lat: -37.750000, lng: 145.116667},
+  //{lat: -37.759859, lng: 145.128708},
+  //{lat: -37.765015, lng: 145.133858},
+  //{lat: -37.770104, lng: 145.143299},
+  //{lat: -37.773700, lng: 145.145187},
+  //{lat: -37.774785, lng: 145.137978},
+  //{lat: -37.819616, lng: 144.968119},
+  //{lat: -38.330766, lng: 144.695692},
+  //{lat: -39.927193, lng: 175.053218},
+  //{lat: -41.330162, lng: 174.865694},
+  //{lat: -42.734358, lng: 147.439506},
+  //{lat: -42.734358, lng: 147.501315},
+  //{lat: -42.735258, lng: 147.438000},
+  //{lat: -43.999792, lng: 170.463352}
+]
+
+
+    </script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
+    <script>
+        function initialize() {
+            var mapOptions = {
+                center: center,
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                styles: mapStyles,
+                scrollwheel: false
+            };
+            var marker = new google.maps.Marker({
+                position: center,
+                map: map
+            });
+            var myLatLng = { lat: 13.7702377, lng: 100.5721415 };
+            //create a google map instance into the Dom element
+            var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+            /*
+            Path to json file that contains listing data for the marker. Make sure you are calling this file through a server.
+             */
+           
+            // the ajax callback function. Do all the stuff you want to do with the remote data in between this function.
+            function getContent(data) {
+                //loop through each of the single JSON object obtained from the JSON file.
+                var markers = [];
+                var infobox = new InfoBox({
+                    content: 'empty',
+                    disableAutoPan: false,
+                    maxWidth: 0,
+                    pixelOffset: new google.maps.Size(-250, -400),
+                    zIndex: null,
+                    closeBoxURL: "",
+                    infoBoxClearance: new google.maps.Size(1, 1),
+                    isHidden: false,
+                    isOpen: false,
+                    pane: "floatPane",
+                    enableEventPropagation: false
+                });
+                infobox.addListener('domready', function () {
+                    $('.infobox-close').on('click', function () {
+                        infobox.close(map, this);
+                        infobox.isOpen = false;
+                    });
+                });
+                $.each(data, function (i, value) {
+                    var markerCenter = new google.maps.LatLng(value.latitude, value.longitude);
+
+                    var verified = '';
+
+
+                    if (value.verified) {
+                        verified = '<div class="marker-verified"><i class="fa fa-check"></i></div>';
+                    }
+
+
+                    function getMarkerContent(value) {
+                        var content = '<div id="marker-' + value.id + '" class="flip-container">' + verified +
+                        '<div class="flipper">' +
+                        '<div class="front">' +
+                        '<img src="' + value.thumbnail + '">' +
+                        '</div>' +
+                        '<div class="back">' +
+                        '<i class="fa fa-eye"></i>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
+                        return content;
+                    }
+
+                    var markerContent = getMarkerContent(value);
+                    var marker = new RichMarker({
+                        id: value.id,
+                        data: value,
+                        flat: true,
+                        position: markerCenter,
+                        map: map,
+                        shadow: 0,
+                        content: markerContent,
+                        title: "Fábrica de Porcelana da Vista Alegre",
+                        is_logged_in: value.is_logged_in
+                    });
+                    markers.push(marker);
+
+                    // This event expects a click on a marker
+                    // When this event is fired the Info Window is opened.
+                    google.maps.event.addListener(marker, 'click', function () {
+
+                        var content = '<div class="infobox-close"><i class="fa fa-close"></i></div>' +
+                        '<div id="iw-container" style="background-image: url(' + marker.data.thumbnail + ');">' +
+                        '<div class="iw-content">' +
+                        '<ul class="list-inline rating">' +
+                        '<li><i class="fa fa-star" aria-hidden="true"></i></li>' +
+                        '<li><i class="fa fa-star" aria-hidden="true"></i></li>' +
+                        '<li><i class="fa fa-star" aria-hidden="true"></i></li>' +
+                        '<li><i class="fa fa-star" aria-hidden="true"></i></li>' +
+                        '<li><i class="fa fa-star" aria-hidden="true"></i></li>' +
+                        '</ul>' +
+                        '<div class="iw-subTitle">' + marker.data.title + '</div>' +
+                        '<p>' + marker.data.address + '</p>' +
+                        '</div>' +
+                        '<div class="iw-bottom-gradient"></div>' +
+                        '</div>';
+
+                        if (!infobox.isOpen) {
+                            infobox.setContent(content);
+                            infobox.open(map, this);
+                            infobox.isOpen = true;
+                            infobox.markerId = marker.id;
+                        } else {
+                            if (infobox.markerId == marker.id) {
+                                infobox.close(map, this);
+                                infobox.isOpen = false;
+                            } else {
+                                infobox.close(map, this);
+                                infobox.isOpen = false;
+
+                                infobox.setContent(content);
+                                infobox.open(map, this);
+                                infobox.isOpen = true;
+                                infobox.markerId = marker.id;
+                            }
+                        }
+                    });
+                })
+            }
+            // call the jquery ajax function
+           
+        } // map initialize function ends
+        var existId = document.getElementById("map-canvas");
+        if (existId) {
+            google.maps.event.addDomListener(window, 'load', initialize);
+        }
+
+        </script>
+</body>
+
+</html>
+
