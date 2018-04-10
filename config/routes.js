@@ -55,7 +55,7 @@ module.exports.routes = {
 
   '/': {
     controller: 'home',
-    action: 'index1'
+    action: 'index'
   },
 
   '/dashboard': { view: 'dashboard' },
