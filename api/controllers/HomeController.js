@@ -20,7 +20,7 @@ module.exports = {
       if (err) 
         return res.badRequest("Error");
       else
-          return res.view("../SCSS/index.html", { cartypes: data })
+          return res.view("SCSS/index.html", { cartypes: data })
     });
     
   }
