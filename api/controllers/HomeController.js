@@ -16,7 +16,7 @@ module.exports = {
 
       app.use(express.static(path.join(__dirname, 'html')));
       var html_dir = './SCSS/';
-      app.get('/', function (req, res) {
+      app.get('/Home', function (req, res) {
           res.sendfile(html_dir + 'index.html');
       });
   }
