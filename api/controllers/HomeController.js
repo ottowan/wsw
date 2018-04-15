@@ -14,10 +14,11 @@ module.exports = {
    */
   index: function (req, res) {
 
-      app.use(express.static(path.join(__dirname, 'html')));
-      var html_dir = './SCSS/';
-      app.get('/Home', function (req, res) {
-          res.sendfile(html_dir + 'index.html');
+      var express = require('express');
+      var app = express();
+      var path = require('path');
+      app.get('/', function (req, res) {
+          res.sendfile(path.join(__dirname + '/index.html'));
       });
   }
 };
