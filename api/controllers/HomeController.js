@@ -14,15 +14,11 @@ module.exports = {
    */
   index: function (req, res) {
 
-    CarType.find().exec(function(err, data) {
-
-      //console.log(data)
-      if (err) 
-        return res.badRequest("Error");
-      else
-          return res.sendFile('index.html');
-    });
-    
+      app.use(express.static(path.join(__dirname, 'html')));
+      var html_dir = './SCSS/';
+      app.get('/', function (req, res) {
+          res.sendfile(html_dir + 'index.html');
+      });
   }
 };
 
