@@ -20,7 +20,7 @@ module.exports = {
       if (err) 
         return res.badRequest("Error");
       else
-        return res.view("index" ,{ cartypes : data})
+          return res.sendFile('index.html');
     });
     
   }
