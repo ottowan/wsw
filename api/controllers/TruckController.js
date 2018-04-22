@@ -45,7 +45,7 @@ module.exports = {
       plate_no: req.param('plate_no'),
       name: req.param('name'),
     }
-    
+
     Truck.create(param).exec(function (err, data) {
 
 
@@ -62,13 +62,29 @@ module.exports = {
   },
 
   find: function (req, res) {
-    join = ['province', 'cartype']
+    join = ['cartype']
     Truck.find().populate(join).sort('createdAt ASC').exec(function (err, data) {
 
       //console.log(data)
-      responses = { partnercars : data}
+      responses = { partnercars: data }
       return res.view("list-car", responses)
     });
   },
+
+  findByCartypeAndPartner: function (req, res) {
+
+    var criteria = {
+      cartype: req.param('cid'),
+      partner: req.param('pid')
+
+    }
+    Truck.find(criteria).sort('createdAt ASC').exec(function (err, data) {
+
+      //console.log(data)
+      //responses = { partnercars: data }
+      return res.json(data)
+    });
+  },
+
 };
 

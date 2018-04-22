@@ -6,31 +6,33 @@
  */
 
 module.exports = {
-    index: function () {
+    index: function (req, res) {
 
+        //var partner = 1
+        var criteria = {partner : 1}
         async.parallel({
 
-            route: function (parallelCb) {
-                Route.find().sort('name ASC').exec(function (err, data) {
+            routeinfo: function (parallelCb) {
+                RouteInfo.find(criteria).sort('name ASC').exec(function (err, data) {
                     parallelCb(null, { err: err, data: data });
                 });
             },
             cartype: function (parallelCb) {
-                CarType.find().sort('name ASC').exec(function (err, data) {
+                CarType.find().sort('name DESC').exec(function (err, data) {
                     parallelCb(null, { err: err, data: data });
                 });
             },
             driver: function (parallelCb) {
-                Driver.find().sort('firstname ASC').exec(function (err, data) {
+                Driver.find(criteria).sort('firstname ASC').exec(function (err, data) {
                     parallelCb(null, { err: err, data: data });
                 });
             }
         }, function (err, results) {
 
             let responses = {
-                route: results.route.data,
-                cartype: results.cartype.data,
-                driver: results.cartype.data
+                routeinfoes: results.routeinfo.data,
+                cartypes: results.cartype.data,
+                drivers: results.driver.data
             }
 
             //console.log(responses)

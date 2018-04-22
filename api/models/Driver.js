@@ -44,6 +44,10 @@ module.exports = {
       type: 'string',
       columnName: 'district'
     },
+    province: {
+      type: 'string',
+      columnName: 'province'
+    },
     postcode: {
       type: 'string',
       columnName: 'postcode'
@@ -55,15 +59,9 @@ module.exports = {
       type: 'string',
       columnName: 'mobile'
     },
-    province: {
-      model: 'province'
-    },
     partner: {
       model: 'partner'
-    },
-    truck: {
-      model: 'truck'
-    },
+    }
   }
 };
 

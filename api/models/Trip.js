@@ -21,6 +21,17 @@ module.exports = {
       type: 'float',
       columnName: 'rating'
     },
+    depart_date: {
+      type: 'datetime',
+      columnName: 'depart_date'
+    },
+    depart_time: {
+      type: 'time',
+      columnName: 'depart_time'
+    },
+    routeinfo: {
+      model: 'routeinfo'
+    },
     partner: {
       model: 'partner'
     },

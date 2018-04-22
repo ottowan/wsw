@@ -30,7 +30,7 @@ module.exports = {
             postcode5: req.param('postcode5'),
             postcode6: req.param('postcode6'),
             endpostcode: req.param('endpostcode')
-            
+
         }).exec(function (err, data) {
 
 
@@ -39,24 +39,19 @@ module.exports = {
             if (err)
                 return res.badRequest("Error");
             else
-                return res.send( { message: "Sugoi!!!" })
+                return res.redirect('/list-routeinfo');
         })
 
 
     },
 
     find: function (req, res) {
-        //join = ['province', 'partnercar'] .populate(join)
-        var param = {start_name : res.param("start"), end_name:res.param("end")}
+        RouteInfo.find().sort('createdAt ASC').exec(function (err, data) {
 
-        console.log(res.param("start"))
-
-        Route.find().sort('createdAt ASC').exec(function (err, data) {
-    
-          console.log(err)
-          responses = { drivers : data}
-          return res.view("list-driver", responses)
+            //console.log(data)
+            responses = { routeinfo: data }
+            return res.view("list-routeinfo", responses)
         });
-      },
+    },
 };
 

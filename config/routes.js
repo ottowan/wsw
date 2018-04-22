@@ -146,10 +146,24 @@ module.exports.routes = {
     action: 'create'
   },
 
+  'get /list-routeinfo': {
+    controller: 'routeinfo',
+    action: 'find'
+  },
+  
+
+  'get /truck/cartype/:cid/partner/:pid': {
+    controller: 'truck',
+    action: 'findByCartypeAndPartner'
+  },
+
+
   'get /trip': {
     controller: 'trip',
     action: 'index'
   },
+
+
 
   // '/list-route': { view: 'list-route' },
   // '/add-route': { view: 'add-route' },

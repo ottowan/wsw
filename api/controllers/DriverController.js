@@ -9,32 +9,7 @@ module.exports = {
 
   index: function (req, res) {
 
-    async.parallel({
-
-      partnercars: function (parallelCb) {
-        Province.find().sort('name ASC').exec(function (err, data) {
-          parallelCb(null, { err: err, data: data });
-        });
-      },
-      provinces: function (parallelCb) {
-        Province.find().sort('name ASC').exec(function (err, data) {
-          parallelCb(null, { err: err, data: data });
-        });
-      },
-    }, function (err, results) {
-
-      let responses = {
-        provinces: results.provinces.data,
-        partnercars : results.partnercars.data
-      }
-
-      //console.log(responses)
-      if (err)
-        return res.badRequest("Error");
-      else
-        return res.view("add-driver", responses)
-
-    })
+    res.view("add-driver")
   },
 
 
@@ -70,8 +45,7 @@ module.exports = {
   },
 
   find: function (req, res) {
-    join = ['province', 'truck']
-    Driver.find().populate(join).sort('createdAt ASC').exec(function (err, data) {
+    Driver.find().sort('createdAt ASC').exec(function (err, data) {
 
       console.log(err)
       responses = { drivers : data}
