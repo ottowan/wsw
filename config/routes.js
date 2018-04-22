@@ -53,6 +53,14 @@ module.exports.routes = {
   // 'get /forum': { view: 'forum' },
   // 'get /post': { view: 'post' },
 
+
+
+  'post /partner': {
+    controller: 'partner',
+    action: 'create'
+  },
+
+
   '/': {
     controller: 'home',
     action: 'index'
@@ -61,15 +69,25 @@ module.exports.routes = {
   '/dashboard': { view: 'dashboard' },
 
 
+  'get /district/province/:pid': {
+    controller: 'District',
+    action: 'findByProvince'
+  },
+
+  
+
+
   //Partner Car
   'get /list-car': {
     controller: 'truck',
     action: 'find'
   },
+
   'post /add-car': {
     controller: 'truck',
     action: 'create'
   },
+
   'get /add-car': {
     controller: 'truck',
     action: 'index'
@@ -92,30 +110,47 @@ module.exports.routes = {
   },
 
 
-  //Route
+  // //Route
+  // // 'get /route': {
+  // //   controller: 'routename',
+  // //   action: 'find'
+  // // },
+  // 'post /routes': {
+  //   controller: 'trip',
+  //   action: 'create'
+  // },
+
   // 'get /route': {
-  //   controller: 'routename',
+  //   controller: 'trip',
+  //   action: 'index'
+  // },
+
+  // 'get /routes': {
+  //   controller: 'trip',
+  //   action: 'index'
+  // },
+
+  // 'post /search/:start/:end': {
+  //   controller: 'trip',
   //   action: 'find'
   // },
-  'post /routes': {
-    controller: 'trip',
+
+
+  'get /routeinfo': {
+    controller: 'routeinfo',
+    action: 'index'
+  },
+  
+  'post /routeinfo': {
+    controller: 'routeinfo',
     action: 'create'
   },
-  'get /route': {
-    controller: 'trip',
-    action: 'index'
-  },
-  'get /routes': {
+
+  'get /trip': {
     controller: 'trip',
     action: 'index'
   },
 
-  'post /search/:start/:end': {
-    controller: 'trip',
-    action: 'find'
-  },
-
-  
   // '/list-route': { view: 'list-route' },
   // '/add-route': { view: 'add-route' },
   // '/edit-route': { view: 'edit-route' },

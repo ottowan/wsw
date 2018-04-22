@@ -7,10 +7,34 @@
 
 var Passwords = require('machinepack-passwords');
 module.exports = {
+    // index: function (req, res) {
+    //     res.view("partner-signup");
+    // },
+
     index: function (req, res) {
-        res.view("partner-signup");
+
+        async.parallel({
+            provinces: function (parallelCb) {
+                Province.find().sort('name ASC').exec(function (err, data) {
+                    parallelCb(null, { err: err, data: data });
+                });
+            },
+        }, function (err, results) {
+
+            let responses = {
+                provinces: results.provinces.data
+            }
+
+            //console.log(responses)
+            if (err)
+                return res.badRequest("Error");
+            else
+                return res.view("partner-signup", responses)
+
+        })
     },
-    create : function (req, res) {
+
+    create: function (req, res) {
         //console.log(req)
 
         // console.log("Call signup() : "+req.param('password'))
@@ -25,7 +49,7 @@ module.exports = {
             // OK.
             success: function (encryptedPassword) {
                 // Create a user record in the database.
-                Partner.create({
+                var param = {
                     license_id: req.param('license_id'),
                     vat_id: req.param('vat_id'),
                     company_name: req.param('company_name'),
@@ -41,7 +65,9 @@ module.exports = {
                     email: req.param('email'),
                     mobile: req.param('mobile'),
                     password: encryptedPassword
-                }).exec(function (err, newUser) {
+                }
+
+                Partner.create(param).exec(function (err, newUser) {
                     // If there was an error, we negotiate it.
                     if (err) {
 
@@ -79,16 +105,17 @@ module.exports = {
                     // Otherwise, `err` was falsy, so it worked!  The user was created.
                     // (maybe do other stuff here, or just send a 200 OK response)
 
-                    req.session.partner = newUser.id; 
-                    req.session.email = newUser.email; 
-                    req.session.username = newUser.username; 
-                    req.session.fisrtname = newUser.fisrtname; 
-                    req.session.lastname = newUser.lastname; 
+                    req.session.partner = newUser.id;
+                    req.session.email = newUser.email;
+                    req.session.username = newUser.username;
+                    req.session.fisrtname = newUser.fisrtname;
+                    req.session.lastname = newUser.lastname;
                     return res.redirect('/dashboard');
+                    //return res.send(data)
 
                 });//</User.create>
             }
-        });//</Passwords.encryptPassword>
+        })//</Passwords.encryptPassword>
     }//</UserController.signup>
 };
 

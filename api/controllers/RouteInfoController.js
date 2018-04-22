@@ -7,16 +7,29 @@
 
 module.exports = {
     index: function (req, res) {
-
         return res.view("add-route")
     },
 
     create: function (req, res) {
-
-        Route.create({
+        RouteInfo.create({
+            partner: 1,
             name: req.param('name'),
-            start_name: req.param('start_name'),
-            end_name: req.param('end_name')
+            startpoint: req.param('startpoint'),
+            stoppoint1: req.param('stoppoint1'),
+            stoppoint2: req.param('stoppoint2'),
+            stoppoint3: req.param('stoppoint3'),
+            stoppoint4: req.param('stoppoint4'),
+            stoppoint5: req.param('stoppoint5'),
+            stoppoint6: req.param('stoppoint6'),
+            endpoint: req.param('endpoint'),
+            startpostcode: req.param('startpostcode'),
+            postcode1: req.param('postcode1'),
+            postcode2: req.param('postcode2'),
+            postcode3: req.param('postcode3'),
+            postcode4: req.param('postcode4'),
+            postcode5: req.param('postcode5'),
+            postcode6: req.param('postcode6'),
+            endpostcode: req.param('endpostcode')
             
         }).exec(function (err, data) {
 
@@ -28,6 +41,8 @@ module.exports = {
             else
                 return res.send( { message: "Sugoi!!!" })
         })
+
+
     },
 
     find: function (req, res) {

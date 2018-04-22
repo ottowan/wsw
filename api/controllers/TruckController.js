@@ -38,13 +38,15 @@ module.exports = {
 
 
   create: function (req, res) {
-    Truck.create({
+    var param = {
       cartype: req.param('cartype'),
       partner: req.param('partner'),
       province: req.param('province'),
       plate_no: req.param('plate_no'),
       name: req.param('name'),
-    }).exec(function (err, data) {
+    }
+    
+    Truck.create(param).exec(function (err, data) {
 
 
       console.log(data)
