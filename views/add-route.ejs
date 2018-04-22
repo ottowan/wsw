@@ -228,7 +228,8 @@
                             </div>
                             <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                 <label for="orderStatus">จุดเริ่มต้น</label>
-                                <input type="text" class="form-control" id="start" placeholder="ต้นทาง" name="startpoint" required>
+                                <input type="text" class="form-control" id="start" placeholder="ต้นทาง" name="startpoint"  onchange="startPostcode()"  required>
+								 <input type="text" class="form-control" id="startpostcode" name="startpostcode" placeholder="ต้นทาง" required>
                             </div>
                             <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                 <!--<label for="orderStatus">Stop point1</label>-->
@@ -256,7 +257,8 @@
                             </div>
                             <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                 <label for="orderStatus">ปลายทาง</label>
-                                <input type="text" class="form-control" id="end" name="endpoint" placeholder="ปลายทาง" required>
+                                <input type="text" class="form-control" id="end" name="endpoint" onchange="endPostcode()" placeholder="ปลายทาง" required>
+								   <input type="text" class="form-control" id="endpostcode" name="endpostcode" placeholder="ปลายทาง">
                             </div>
 
                             <div class="form-group col-md-12 col-md-offset-1 col-sm-12 col-xs-12">
@@ -567,6 +569,69 @@
 
             //document.getElementById('start1').value = "tetstsdtats";
 
+
+    </script>
+	<script>
+        function startPostcode() {
+           
+            var geocoder = new google.maps.Geocoder();
+            //get postal code start.
+            var start0 = document.getElementById("start").value;
+            geocoder.geocode({ 'address': start0 }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+
+                    var start0_lat = results[0].geometry.location.lat();
+                    var start0_lng = results[0].geometry.location.lng();
+                    var StartLatlng0 = new google.maps.LatLng(start0_lat, start0_lng);
+                    geocoder.geocode(
+             { 'latLng': StartLatlng0 },
+               function (results, status) {
+                   if (status == google.maps.GeocoderStatus.OK) {
+
+                       var add = results[0].formatted_address;
+                       var value = add.split(" ");
+
+                       count = value.length;
+
+                       start_post = value[count - 2];
+                       document.getElementById("startpostcode").value = start_post;
+                   }
+               });
+                }
+            });
+            //end postal code start.
+           
+        }
+
+        function endPostcode() {
+            var geocoder = new google.maps.Geocoder();
+             //get end postal code .
+            var end = document.getElementById("end").value;
+            geocoder.geocode({ 'address': end }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+
+                    var end_lat = results[0].geometry.location.lat();
+                    var end_lng = results[0].geometry.location.lng();
+                    var endLatlng0 = new google.maps.LatLng(end_lat, end_lng);
+                    geocoder.geocode(
+             { 'latLng': endLatlng0 },
+               function (results, status) {
+                   if (status == google.maps.GeocoderStatus.OK) {
+
+                       var add = results[0].formatted_address;
+                       var value = add.split(" ");
+
+                       count = value.length;
+
+                       end_post = value[count - 2];
+                       document.getElementById("endpostcode").value = end_post;
+                   }
+               });
+                }
+            });
+            //end postal code start.
+
+        }
 
     </script>
 
