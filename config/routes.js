@@ -141,6 +141,11 @@ module.exports.routes = {
     action: 'index'
   },
   
+  'get /routeinfo/:id': {
+    controller: 'routeinfo',
+    action: 'findByID'
+  },
+
   'post /routeinfo': {
     controller: 'routeinfo',
     action: 'create'

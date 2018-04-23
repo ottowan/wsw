@@ -228,50 +228,49 @@
                             </div>
                             <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                 <label for="orderStatus">จุดเริ่มต้น</label>
-                                <input type="text" class="form-control" id="start" placeholder="ต้นทาง" name="startpoint"  onchange="startPostcode()"  required>
-								 <input type="hidden" class="form-control" id="startpostcode" name="startpostcode" placeholder="ต้นทาง" required>
+                                <input type="text" class="form-control" id="start" placeholder="ต้นทาง" name="startpoint" onchange="startPostcode()" required>
+                                <input type="hidden" class="form-control" id="startpostcode" name="startpostcode" placeholder="ต้นทาง" required>
                             </div>
                             <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                 <!--<label for="orderStatus">Stop point1</label>-->
                                 <input type="text" class="form-control" id="waypoints1" name="stoppoint1" onchange="Postcode1()" placeholder="Stop point1">
-								 <input type="hidden" class="form-control" id="postcode1" name="postcode1" placeholder="Stop point1">
+                                <input type="hidden" class="form-control" id="postcode1" name="postcode1" placeholder="Stop point1">
                             </div>
                             <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                 <!--<label for="orderStatus">Stop point2</label>-->
                                 <input type="text" class="form-control" id="waypoints2" name="stoppoint2" onchange="Postcode2()" placeholder="Stop point2">
-								<input type="hidden" class="form-control" id="postcode2" name="postcode2" placeholder="Stop point2">
+                                <input type="hidden" class="form-control" id="postcode2" name="postcode2" placeholder="Stop point2">
                             </div>
                             <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                 <!--<label for="orderStatus">Stop point3</label>-->
                                 <input type="text" class="form-control" id="waypoints3" name="stoppoint3" onchange="Postcode3()" placeholder="Stop point3">
-								<input type="hidden" class="form-control" id="postcode3" name="postcode3" placeholder="Stop point3">
+                                <input type="hidden" class="form-control" id="postcode3" name="postcode3" placeholder="Stop point3">
                             </div>
                             <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                 <!--<label for="orderStatus">Stop point4</label>-->
                                 <input type="text" class="form-control" id="waypoints4" name="stoppoint4" onchange="Postcode4()" placeholder="Stop point4">
-								<input type="hidden" class="form-control" id="postcode4" name="postcode4" placeholder="Stop point4">
+                                <input type="hidden" class="form-control" id="postcode4" name="postcode4" placeholder="Stop point4">
                             </div>
                             <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                 <!--<label for="orderStatus">Stop point5</label>-->
-                                <input type="text" class="form-control" id="waypoints5" name="stoppoint5" onchange="Postcode5()"placeholder="Stop point5">
-								<input type="hidden" class="form-control" id="postcode5" name="postcode5" placeholder="Stop point5">
+                                <input type="text" class="form-control" id="waypoints5" name="stoppoint5" onchange="Postcode5()" placeholder="Stop point5">
+                                <input type="hidden" class="form-control" id="postcode5" name="postcode5" placeholder="Stop point5">
                             </div>
                             <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                 <!--<label for="orderStatus">Stop point6</label>-->
                                 <input type="text" class="form-control" id="waypoints6" name="stoppoint6" onchange="Postcode6()" placeholder="Stop point6">
-								<input type="hidden" class="form-control" id="postcode6" name="postcode6" placeholder="Stop point6">
+                                <input type="hidden" class="form-control" id="postcode6" name="postcode6" placeholder="Stop point6">
                             </div>
                             <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                 <label for="orderStatus">ปลายทาง</label>
                                 <input type="text" class="form-control" id="end" name="endpoint" onchange="endPostcode()" placeholder="ปลายทาง" required>
-								   <input type="hidden" class="form-control" id="endpostcode" name="endpostcode" placeholder="ปลายทาง">
+                                <input type="hidden" class="form-control" id="endpostcode" name="endpostcode" placeholder="ปลายทาง">
                             </div>
 
                             <div class="form-group col-md-12 col-md-offset-1 col-sm-12 col-xs-12">
                                 <button type="button" class="btn btn-primary" value="ดูเส้นทาง" style="text-align:center" id="submit" onclick="initMap()">
                                     ดูเส้นทาง </button>
-                                <button type="submit" class="btn btn-primary" value="บันทึกเส้นทาง" style="text-align:center" id="save" 
-                                >
+                                <button type="submit" class="btn btn-primary" value="บันทึกเส้นทาง" style="text-align:center" id="save">
                                     บันทึกเส้นทาง </button>
                             </div>
 
@@ -577,9 +576,9 @@
 
 
     </script>
-	<script>
+    <script>
         function startPostcode() {
-           
+
             var geocoder = new google.maps.Geocoder();
             //get postal code start.
             var start0 = document.getElementById("start").value;
@@ -590,28 +589,28 @@
                     var start0_lng = results[0].geometry.location.lng();
                     var StartLatlng0 = new google.maps.LatLng(start0_lat, start0_lng);
                     geocoder.geocode(
-             { 'latLng': StartLatlng0 },
-               function (results, status) {
-                   if (status == google.maps.GeocoderStatus.OK) {
+                        { 'latLng': StartLatlng0 },
+                        function (results, status) {
+                            if (status == google.maps.GeocoderStatus.OK) {
 
-                       var add = results[0].formatted_address;
-                       var value = add.split(" ");
+                                var add = results[0].formatted_address;
+                                var value = add.split(" ");
 
-                       count = value.length;
+                                count = value.length;
 
-                       start_post = value[count - 2];
-                       document.getElementById("startpostcode").value = start_post;
-                   }
-               });
+                                start_post = value[count - 2];
+                                document.getElementById("startpostcode").value = start_post;
+                            }
+                        });
                 }
             });
             //end postal code start.
-           
+
         }
 
         function endPostcode() {
             var geocoder = new google.maps.Geocoder();
-             //get end postal code .
+            //get end postal code .
             var end = document.getElementById("end").value;
             geocoder.geocode({ 'address': end }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
@@ -620,25 +619,27 @@
                     var end_lng = results[0].geometry.location.lng();
                     var endLatlng0 = new google.maps.LatLng(end_lat, end_lng);
                     geocoder.geocode(
-             { 'latLng': endLatlng0 },
-               function (results, status) {
-                   if (status == google.maps.GeocoderStatus.OK) {
+                        { 'latLng': endLatlng0 },
+                        function (results, status) {
+                            if (status == google.maps.GeocoderStatus.OK) {
 
-                       var add = results[0].formatted_address;
-                       var value = add.split(" ");
+                                var add = results[0].formatted_address;
+                                var value = add.split(" ");
 
-                       count = value.length;
+                                count = value.length;
 
-                       end_post = value[count - 2];
-                       document.getElementById("endpostcode").value = end_post;
-                   }
-               });
+                                end_post = value[count - 2];
+                                document.getElementById("endpostcode").value = end_post;
+                            }
+                        });
                 }
             });
             //end postal code start.
 
         }
-		        function Postcode1() {
+
+        
+        function Postcode1() {
             var geocoder = new google.maps.Geocoder();
             //get end postal code .
             var postal = document.getElementById("waypoints1").value;
@@ -649,163 +650,165 @@
                     var post_lng = results[0].geometry.location.lng();
                     var postLatlng0 = new google.maps.LatLng(post_lat, post_lng);
                     geocoder.geocode(
-             { 'latLng': postLatlng0 },
-               function (results, status) {
-                   if (status == google.maps.GeocoderStatus.OK) {
+                        { 'latLng': postLatlng0 },
+                        function (results, status) {
+                            if (status == google.maps.GeocoderStatus.OK) {
 
-                       var add = results[0].formatted_address;
-                       var value = add.split(" ");
+                                var add = results[0].formatted_address;
+                                var value = add.split(" ");
 
-                       count = value.length;
+                                count = value.length;
 
-                       post = value[count - 2];
-                       document.getElementById("postcode1").value = post;
-                   }
-               });
+                                post = value[count - 2];
+                                document.getElementById("postcode1").value = post;
+                            }
+                        });
                 }
             });
         }
+        //end postal code start.
+        function Postcode2() {
+            var geocoder = new google.maps.Geocoder();
+            //get end postal code .
+            var postal = document.getElementById("waypoints2").value;
+            geocoder.geocode({ 'address': postal }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+
+                    var post_lat = results[0].geometry.location.lat();
+                    var post_lng = results[0].geometry.location.lng();
+                    var postLatlng0 = new google.maps.LatLng(post_lat, post_lng);
+                    geocoder.geocode(
+                        { 'latLng': postLatlng0 },
+                        function (results, status) {
+                            if (status == google.maps.GeocoderStatus.OK) {
+
+                                var add = results[0].formatted_address;
+                                var value = add.split(" ");
+
+                                count = value.length;
+
+                                post = value[count - 2];
+                                document.getElementById("postcode2").value = post;
+                            }
+                        });
+                }
+            });
             //end postal code start.
-            function Postcode2() {
-                var geocoder = new google.maps.Geocoder();
-                //get end postal code .
-                var postal = document.getElementById("waypoints2").value;
-                geocoder.geocode({ 'address': postal }, function (results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
+        }
+        function Postcode3() {
+            var geocoder = new google.maps.Geocoder();
+            //get end postal code .
+            var postal = document.getElementById("waypoints3").value;
+            geocoder.geocode({ 'address': postal }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
 
-                        var post_lat = results[0].geometry.location.lat();
-                        var post_lng = results[0].geometry.location.lng();
-                        var postLatlng0 = new google.maps.LatLng(post_lat, post_lng);
-                        geocoder.geocode(
-                 { 'latLng': postLatlng0 },
-                   function (results, status) {
-                       if (status == google.maps.GeocoderStatus.OK) {
+                    var post_lat = results[0].geometry.location.lat();
+                    var post_lng = results[0].geometry.location.lng();
+                    var postLatlng0 = new google.maps.LatLng(post_lat, post_lng);
+                    geocoder.geocode(
+                        { 'latLng': postLatlng0 },
+                        function (results, status) {
+                            if (status == google.maps.GeocoderStatus.OK) {
 
-                           var add = results[0].formatted_address;
-                           var value = add.split(" ");
+                                var add = results[0].formatted_address;
+                                var value = add.split(" ");
 
-                           count = value.length;
+                                count = value.length;
 
-                           post = value[count - 2];
-                           document.getElementById("postcode2").value = post;
-                       }
-                   });
-                    }
-                });
-                //end postal code start.
-            }
-            function Postcode3() {
-                var geocoder = new google.maps.Geocoder();
-                //get end postal code .
-                var postal = document.getElementById("waypoints3").value;
-                geocoder.geocode({ 'address': postal }, function (results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
+                                post = value[count - 2];
+                                document.getElementById("postcode3").value = post;
+                            }
+                        });
+                }
+            });
+            //end postal code start.
+        }
+        function Postcode4() {
+            var geocoder = new google.maps.Geocoder();
+            //get end postal code .
+            var postal = document.getElementById("waypoints4").value;
+            geocoder.geocode({ 'address': postal }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
 
-                        var post_lat = results[0].geometry.location.lat();
-                        var post_lng = results[0].geometry.location.lng();
-                        var postLatlng0 = new google.maps.LatLng(post_lat, post_lng);
-                        geocoder.geocode(
-                 { 'latLng': postLatlng0 },
-                   function (results, status) {
-                       if (status == google.maps.GeocoderStatus.OK) {
+                    var post_lat = results[0].geometry.location.lat();
+                    var post_lng = results[0].geometry.location.lng();
+                    var postLatlng0 = new google.maps.LatLng(post_lat, post_lng);
+                    geocoder.geocode(
+                        { 'latLng': postLatlng0 },
+                        function (results, status) {
+                            if (status == google.maps.GeocoderStatus.OK) {
 
-                           var add = results[0].formatted_address;
-                           var value = add.split(" ");
+                                var add = results[0].formatted_address;
+                                var value = add.split(" ");
 
-                           count = value.length;
+                                count = value.length;
 
-                           post = value[count - 2];
-                           document.getElementById("postcode3").value = post;
-                       }
-                   });
-                    }
-                });
-                //end postal code start.
-            }
-            function Postcode4() {
-                var geocoder = new google.maps.Geocoder();
-                //get end postal code .
-                var postal = document.getElementById("waypoints4").value;
-                geocoder.geocode({ 'address': postal }, function (results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
+                                post = value[count - 2];
+                                document.getElementById("postcode4").value = post;
+                            }
+                        });
+                }
+            });
+            //end postal code start.
+        }
+        function Postcode5() {
+            var geocoder = new google.maps.Geocoder();
+            //get end postal code .
+            var postal = document.getElementById("waypoints5").value;
+            geocoder.geocode({ 'address': postal }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
 
-                        var post_lat = results[0].geometry.location.lat();
-                        var post_lng = results[0].geometry.location.lng();
-                        var postLatlng0 = new google.maps.LatLng(post_lat, post_lng);
-                        geocoder.geocode(
-                 { 'latLng': postLatlng0 },
-                   function (results, status) {
-                       if (status == google.maps.GeocoderStatus.OK) {
+                    var post_lat = results[0].geometry.location.lat();
+                    var post_lng = results[0].geometry.location.lng();
+                    var postLatlng0 = new google.maps.LatLng(post_lat, post_lng);
+                    geocoder.geocode(
+                        { 'latLng': postLatlng0 },
+                        function (results, status) {
+                            if (status == google.maps.GeocoderStatus.OK) {
 
-                           var add = results[0].formatted_address;
-                           var value = add.split(" ");
+                                var add = results[0].formatted_address;
+                                var value = add.split(" ");
 
-                           count = value.length;
+                                count = value.length;
 
-                           post = value[count - 2];
-                           document.getElementById("postcode4").value = post;
-                       }
-                   });
-                    }
-                });
-                //end postal code start.
-            }
-            function Postcode5() {
-                var geocoder = new google.maps.Geocoder();
-                //get end postal code .
-                var postal = document.getElementById("waypoints5").value;
-                geocoder.geocode({ 'address': postal }, function (results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
+                                post = value[count - 2];
+                                alert(post)
+                                document.getElementById("postcode5").value = post;
 
-                        var post_lat = results[0].geometry.location.lat();
-                        var post_lng = results[0].geometry.location.lng();
-                        var postLatlng0 = new google.maps.LatLng(post_lat, post_lng);
-                        geocoder.geocode(
-                 { 'latLng': postLatlng0 },
-                   function (results, status) {
-                       if (status == google.maps.GeocoderStatus.OK) {
+                            }
+                        });
+                }
+            });
+            //end postal code start.
+        }
+        function Postcode6() {
+            var geocoder = new google.maps.Geocoder();
+            //get end postal code .
+            var postal = document.getElementById("waypoints6").value;
+            geocoder.geocode({ 'address': postal }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
 
-                           var add = results[0].formatted_address;
-                           var value = add.split(" ");
+                    var post_lat = results[0].geometry.location.lat();
+                    var post_lng = results[0].geometry.location.lng();
+                    var postLatlng0 = new google.maps.LatLng(post_lat, post_lng);
+                    geocoder.geocode(
+                        { 'latLng': postLatlng0 },
+                        function (results, status) {
+                            if (status == google.maps.GeocoderStatus.OK) {
 
-                           count = value.length;
+                                var add = results[0].formatted_address;
+                                var value = add.split(" ");
 
-                           post = value[count - 2];
-                           document.getElementById("postcode5").value = post;
-                       }
-                   });
-                    }
-                });
-                //end postal code start.
-            }
-            function Postcode6() {
-                var geocoder = new google.maps.Geocoder();
-                //get end postal code .
-                var postal = document.getElementById("waypoints6").value;
-                geocoder.geocode({ 'address': postal }, function (results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
+                                count = value.length;
 
-                        var post_lat = results[0].geometry.location.lat();
-                        var post_lng = results[0].geometry.location.lng();
-                        var postLatlng0 = new google.maps.LatLng(post_lat, post_lng);
-                        geocoder.geocode(
-                 { 'latLng': postLatlng0 },
-                   function (results, status) {
-                       if (status == google.maps.GeocoderStatus.OK) {
-
-                           var add = results[0].formatted_address;
-                           var value = add.split(" ");
-
-                           count = value.length;
-
-                           post = value[count - 2];
-                           document.getElementById("postcode6").value = post;
-                       }
-                   });
-                    }
-                });
-                //end postal code start.
-            }
+                                post = value[count - 2];
+                                document.getElementById("postcode6").value = post;
+                            }
+                        });
+                }
+            });
+            //end postal code start.
+        }
 
     </script>
 

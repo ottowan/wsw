@@ -247,16 +247,8 @@
                         <div class="form-group col-md-12 col-sm-12 col-xs-12">
                             <label for="orderStatus">เลือกเส้นทางของคุณ</label>
                             <div class="contactSelect">
-                                <!--select name="route_name" id="route_name" class="form-control">
-                                    <option value="0">กรุงเทพ-พะเยา</option>
-                                    <option value="1">พะเยา-กรุงเทพ</option>
-                                    <option value="2">กรุงเทพ-สงขลา</option>
-                                    <option value="3">กรุงเทพ-เลย</option>
-                                    <option value="4">กรุงเทพ-อุบลราชธานี</option>
-                                    <option value="5">อุบลราชธานี-กรุงเทพ</option>
-                                </select-->
 
-                                <select name="routeinfoes" class="form-control" required>
+                                <select id="routeinfoes" name="routeinfoes" class="form-control" onchange="getRouteInfo()"  required>
                                     <% routeinfoes.forEach(function(routeinfo) { %>
                                         <option value="<%= routeinfo.id %>">
                                             <%= routeinfo.name %>
@@ -305,11 +297,11 @@
 
                         </div>
 
-                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
                             <label for="dateAdded">วันที่ส่งของ</label>
                             <div class="dateSelect">
                                 <div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
-                                    <input id="ship_date" type="text" class="form-control" placeholder="mm/dd/yyyy">
+                                    <input id="depart_date" type="text" class="form-control" placeholder="yyyy-mm-dd">
                                     <div class="input-group-addon">
                                         <i class="icon-listy icon-calendar"></i>
                                     </div>
@@ -322,10 +314,10 @@
 
                         </div>
 
-                        <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
                             <label for="orderStatus">วิ่งทุกวัน</label>
                             <div class="contactSelect">
-                                <select name="day_name" id="day_name" class="form-control">
+                                <select name="day_name" id="day_name" class="form-control" multiple>
                                     <option value="0">วันจันทร์</option>
                                     <option value="1">วันอังคาร</option>
                                     <option value="2">วันพุธ</option>
@@ -535,43 +527,41 @@
     <script src="javascript/custom.js"></script>
     <script>
 
-        var url = "http://localhost:1337" 
+        var url = "http://localhost"
         $(document).ready(function () {
-            //console.log("ready!");
-            var cartype = document.getElementById("cartypes").value;
-            var endpoint = url+"/truck/cartype/" + cartype + "/partner/1"
 
 
-            $.get(endpoint, function (data) {
-                for (var i = 0; i < data.length; i++) {
-                    console.log(data[i].id+" : "+data[i].name)
-                   $('#truck').append(new Option(data[i].plate_no, data[i].id));
-                }
+            getRouteInfo()
+            getTruck()
+
+            $(".ed-datepicker").datepicker({
+                format: 'yyyy-mm-dd'
             });
         });
 
-        function getTruck() {
-            $('#truck').empty() 
-            var cartype = document.getElementById("cartypes").value;
-            var endpoint = url+"/truck/cartype/" + cartype + "/partner/1"
 
+
+        function getRouteInfo() {
+
+            var routeinfo = document.getElementById("routeinfoes").value;
+            var endpoint = url + "/routeinfo/" + routeinfo
+
+            console.log(endpoint)
 
             $.get(endpoint, function (data) {
 
-                if(data.length>0){
-
-                for (var i = 0; i < data.length; i++) {
-                    console.log(data[i].id+" : "+data[i].name)
-                   $('#truck').append(new Option(data[i].plate_no, data[i].id));
-                }
-                }else{
-                    $('#truck').append(new Option("--ไม่มีรถประเภทนี้--", 0));
+                if (data.length > 0) {
+                    //Render waypoint to map
+                    //console.log(data)
+                    initMap(data)
+                } else {
+                    alert("--ไม่มีข้อมูลเส้นทางนี้--")
                 }
             });
         }
 
+        function initMap(data) {
 
-        function initMap() {
             var directionsService = new google.maps.DirectionsService;
             var directionsDisplay = new google.maps.DirectionsRenderer({
                 draggable: true,
@@ -586,78 +576,84 @@
 
             directionsDisplay.setMap(map);
             var waypts = [];
-            var checkboxArray1 = document.getElementById('waypoints1');
-            var checkboxArray2 = document.getElementById('waypoints2');
-            var checkboxArray3 = document.getElementById('waypoints3');
-            var checkboxArray4 = document.getElementById('waypoints4');
-            var checkboxArray5 = document.getElementById('waypoints5');
-            var checkboxArray6 = document.getElementById('waypoints6');
-            if (checkboxArray1.value != "") {
+            var stoppoint1 = data[0].stoppoint1;
+            console.log(stoppoint1)
+            var stoppoint2 = data[0].stoppoint2;
+            console.log(stoppoint2)
+            var stoppoint3 = data[0].stoppoint3;
+            console.log(stoppoint3)
+            var stoppoint4 = data[0].stoppoint4;
+            console.log(stoppoint4)
+            var stoppoint5 = data[0].stoppoint5;
+            console.log(stoppoint5)
+            var stoppoint6 = data[0].stoppoint6;
+            console.log(stoppoint6)
+            if (stoppoint1 != "") {
                 waypts.push({
-                    location: checkboxArray1.value,
+                    location: stoppoint1,
                     stopover: true
                 });
             }
-            if (checkboxArray2.value != "") {
+            if (stoppoint2 != "") {
                 waypts.push({
-                    location: checkboxArray2.value,
+                    location: stoppoint2,
                     stopover: true
                 });
             }
-            if (checkboxArray3.value != "") {
+            if (stoppoint3 != "") {
                 waypts.push({
-                    location: checkboxArray3.value,
+                    location: stoppoint3,
                     stopover: true
                 });
             }
-            if (checkboxArray4.value != "") {
+            if (stoppoint4 != "") {
                 waypts.push({
-                    location: checkboxArray4.value,
+                    location: stoppoint4,
                     stopover: true
                 });
             }
-            if (checkboxArray5.value != "") {
+            if (stoppoint5 != "") {
                 waypts.push({
-                    location: checkboxArray5.value,
+                    location: stoppoint5,
                     stopover: true
                 });
             }
-            if (checkboxArray6.value != "") {
+            if (stoppoint6 != "") {
                 waypts.push({
-                    location: checkboxArray6.value,
+                    location: stoppoint6,
                     stopover: true
                 });
             }
-            //for (var i = 0; i < checkboxArray.length; i++) {
-            //    if (checkboxArray.options[i].selected) {
-            //        waypts.push({
-            //            location: checkboxArray[i].value,
-            //            stopover: true
-            //        });
-            //    }
-            //}
+
+            var startpoint = data[0].startpoint
+            console.log(startpoint)
+            var endpoint = data[0].endpoint
+            console.log(endpoint)
+
             directionsService.route({
-                origin: document.getElementById('start').value,
-                destination: document.getElementById('end').value,
+                origin: startpoint,
+                destination: endpoint,
                 travelMode: 'DRIVING',
                 waypoints: waypts,
                 optimizeWaypoints: true
 
             }, function (response, status) {
+
+                console.log(response)
                 if (status === 'OK') {
                     directionsDisplay.setDirections(response);
-                    var route = response.routes[0];
-                    var summaryPanel = document.getElementById('directions-panel');
-                    summaryPanel.innerHTML = '';
-                    // For each route, display summary information.
-                    for (var i = 0; i < route.legs.length; i++) {
-                        var routeSegment = i + 1;
-                        summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
-                            '</b><br>';
-                        summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
-                        summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
-                        summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
-                    }
+                    // var route = response.routes[0];
+                    // var summaryPanel = document.getElementById('directions-panel');
+                    // summaryPanel.innerHTML = '';
+                    // // For each route, display summary information.
+                    // for (var i = 0; i < route.legs.length; i++) {
+                    //     var routeSegment = i + 1;
+                    //     summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
+                    //         '</b><br>';
+                    //     summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
+                    //     summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
+                    //     summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
+                    // }
 
                 }
 
@@ -669,9 +665,25 @@
 
 
 
+        function getTruck() {
+            $('#truck').empty()
+            var cartype = document.getElementById("cartypes").value;
+            var endpoint = url + "/truck/cartype/" + cartype + "/partner/1"
 
-            //document.getElementById('start1').value = "tetstsdtats";
 
+            $.get(endpoint, function (data) {
+
+                if (data.length > 0) {
+
+                    for (var i = 0; i < data.length; i++) {
+                        console.log(data[i].id + " : " + data[i].name)
+                        $('#truck').append(new Option(data[i].plate_no, data[i].id));
+                    }
+                } else {
+                    $('#truck').append(new Option("--ไม่มีรถประเภทนี้--", 0));
+                }
+            });
+        }
 
     </script>
 
