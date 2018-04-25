@@ -13,7 +13,7 @@ module.exports = {
    * `HomeController.index()`
    */
   index: function (req, res) {
-    res.view("index1");
+    res.view("index");
 },
 };
 
