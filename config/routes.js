@@ -61,10 +61,10 @@ module.exports.routes = {
   },
 
 
-  'get /home': {
-    controller: 'home',
-    action: 'index'
-  },
+  // 'get /home': {
+  //   controller: 'home',
+  //   action: 'index'
+  // },
 
   '/dashboard': { view: 'dashboard' },
 
@@ -181,7 +181,7 @@ module.exports.routes = {
 
   '/profile': { view: 'profile' },
 
-  '/': { view: 'index' },
+  '/home': { view: 'index' },
 
   'get /partner-signup': 'PartnerController.index',
 
