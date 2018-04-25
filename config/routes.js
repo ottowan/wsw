@@ -67,7 +67,7 @@ module.exports.routes = {
   // },
 
   '/dashboard': { view: 'dashboard' },
-
+  '/home': { view: 'index' },
 
   'get /district/province/:pid': {
     controller: 'District',
@@ -181,7 +181,7 @@ module.exports.routes = {
 
   '/profile': { view: 'profile' },
 
-  '/home': { view: 'index' },
+
 
   'get /partner-signup': 'PartnerController.index',
 
