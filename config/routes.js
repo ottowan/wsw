@@ -61,7 +61,10 @@ module.exports.routes = {
   },
 
 
- 
+  'get /home': {
+    controller: 'home',
+    action: 'index'
+  },
 
   '/dashboard': { view: 'dashboard' },
 
