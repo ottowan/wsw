@@ -70,6 +70,7 @@ module.exports.routes = {
   '/': { view: 'index' },
   '/home': { view: 'homepage' },
   '/how-it-works': { view: 'how-it-works' },
+  
   'get /district/province/:pid': {
     controller: 'District',
     action: 'findByProvince'
