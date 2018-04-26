@@ -55,16 +55,12 @@ module.exports.routes = {
 
 
 
-  'post /partner': {
-    controller: 'partner',
-    action: 'create'
-  },
 
 
   '/': {
-    controller: 'home',
-    action: 'index'
+    view: 'index'
   },
+
 
   '/dashboard': { view: 'dashboard' },
 
@@ -75,6 +71,10 @@ module.exports.routes = {
   },
 
   
+  'post /partner': {
+    controller: 'partner',
+    action: 'create'
+  },
 
 
   //Partner Car
