@@ -69,7 +69,7 @@ module.exports.routes = {
   '/dashboard': { view: 'dashboard' },
   '/': { view: 'index' },
   '/home': { view: 'homepage' },
-  '/how-it-works': { view: 'how-it-works.html' },
+  '/how-it-works': { view: 'how-it-works' },
 
   'get /district/province/:pid': {
     controller: 'District',
