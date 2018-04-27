@@ -4327,10 +4327,10 @@ input[type=radio]:focus,
 /*================= 10. DASHBOARD ==================*/
 /*================= 10.1 DASHBOARD PROFILE ==================*/
 .dashboardBoxBg {
-  background-color: #ffffff;
+  background-color: #b2c5fa;
   border-radius: 4px;
   border: 1px solid #e5e5e5;
-  padding: 10px; }
+  padding: 5px; }
 
 .mt30 {
   margin-top: 10px; }
