@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- SITE TITTLE -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home We Same Way</title>
+
+    <!-- PLUGINS CSS STYLE -->
+    <link href="plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+    <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="plugins/listtyicons/style.css" rel="stylesheet">
+    <link href="plugins/bootstrapthumbnail/bootstrap-thumbnail.css" rel="stylesheet">
+    <link href="plugins/datepicker/datepicker.min.css" rel="stylesheet">
+    <link href="plugins/selectbox/select_option1.css" rel="stylesheet">
+    <link href="plugins/owl-carousel/owl.carousel.min.css" rel="stylesheet">
+    <link href="plugins/fancybox/jquery.fancybox.pack.css" rel="stylesheet">
+    <link href="plugins/isotope/isotope.min.css" rel="stylesheet">
+    <link href="plugins/map/css/map.css" rel="stylesheet">
+
+    <!-- GOOGLE FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:200,300,400,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff" rel="stylesheet">
+
+    <!-- CUSTOM CSS -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- FAVICON -->
+    <link href="img/favicon.png" rel="shortcut icon">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body class="body-wrapper" onload="initMap();">
+    <div class="page-loader" style="background: url(img/preloader.gif) center no-repeat #fff;"></div>
+    <div class="main-wrapper">
+        <!-- HEADER -->
+        <header id="pageTop" class="header">
+
+            <!-- TOP INFO BAR -->
+
+            <div class="nav-wrapper navbarWhite">
+
+                <div class="container-fluid header-bg">
+                    <div class="row">
+                        <div class="col-lg-4 col-sm-4 col-xs-6 header-left empty">
+                            empty
+                        </div>
+                        <div class="col-lg-8 col-sm-8 col-xs-6 header-right empty">
+                            empty
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NAVBAR -->
+
+                <nav id="menuBar" class="navbar navbar-default lightHeader" role="navigation">
+                    <div class="container">
+
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="index.html">
+                                <img src="img/WeSameWay Logo.png" alt="logo">
+                            </a>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+                            <ul class="nav navbar-nav navbar-right">
+
+                                <li class="active">
+                                    <a href="search.html" style="font-weight:bolder">ค้นหารถ</a>
+                                </li>
+                                <li class="">
+                                    <a href="sign-up.html" style="font-weight:bolder">สมัครเป็นพาร์ทเนอร์</a>
+                                </li>
+                                <li class="dropdown singleDrop">
+                                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="font-weight:bolder">เข้าสู่ระบบ
+                                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li>
+                                            <a href="customer-login.html">สมาชิก</a>
+                                        </li>
+                                        <li>
+                                            <a href="partner-login.html">พาร์ทเนอร์</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <!--<li class=""><a href="login.html" style="font-weight:bolder;font-size:large">เข้าสู่ระบบ</a></li>-->
+                                <li class="">
+                                    <a href="how-it-works.html" style="font-weight:bolder">วิธีใช้งาน</a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <div class="col-md-4">
+            <!--<div class="dashboardPageTitle text-center">
+                <h2>ค้นหารถ</h2>
+            </div>-->
+
+            <div class="dashboardBoxBg mb30">
+                <div class="profileIntro">
+                    <div class="row">
+                        <form id="Search_Form" class="form-group" method="POST" action="search">
+
+                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                <label for="orderId">ต้นทาง</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="start" id="start" onchange="initMap()" placeholder="Location" value="<%=start_route %>"
+                                        required>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-secondary" type="button" onclick="getLocation()" onchange="initMap()" style="width:50px">
+                                            <i class="icon-listy icon-target" action="Search - Result.html" aria-hidden="true"></i>
+                                        </button>
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="form-group col-md-9 col-sm-12 col-xs-12">
+
+                                <!--input type="hidden" class="form-control" id="start1" placeholder="ต้นทาง" value="<%=start_route %>" required -->
+                            </div>
+                            <div class="form-group col-md-9 col-sm-12 col-xs-12">
+                                <label for="orderStatus">ปลายทาง</label>
+                                <input type="text" class="form-control" id="end" name="end" value="<%=end_route %>" onchange="initMap()" placeholder="ปลายทาง"
+                                    required>
+                            </div>
+
+                            <div class="form-group col-md-3 col-sm-12 col-xs-3">
+                                <label for="distant">(km)</label>
+                                <input readonly type="text" class="form-control" id="distant" placeholder="กม">
+                            </div>
+                            <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                <label for="orderStatus">เลือกประเภทรถ</label>
+                                <!--<div  class="searchSelectbox" style="border-color: #e5e5e5;border-style:double">-->
+                                <select id="car" class="form-control">
+                                    <option>รถเก๋ง</option>
+                                    <option>รถกะบะ</option>
+                                    <option>รถกะบะมีหลังคา</option>
+                                    <option>รถสี่ล้อใหญ่</option>
+                                    <option>รถ 6 ล้อ</option>
+                                    <option>รถ 10 ล้อ</option>
+                                    <option>รถ 10 ล้อมีเฮี้ยบ</option>
+                                </select>
+                                <!--</div>-->
+                            </div>
+                            <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                <label for="orderStatus">เลือกประเภทสินค้า</label>
+                                <!--<div class="searchSelectbox" style="border-color: #e5e5e5;border-style:double">-->
+                                <select id="good" class="form-control">
+                                    <option>ไม่ระบุ อื่นๆ</option>
+                                    <option>อุปกรณ์ไฟฟ้า</option>
+                                    <option>เฟอร์นิเจอร์</option>
+                                    <option>อาหารสด ผักผลไม้</option>
+                                    <option>อาหารแห้ง</option>
+                                    <option>เครื่องจักร</option>
+                                    <option>อุปกรณ์ก่อสร้าง</option>
+                                    <option>ต้นไม้ ดิน หิน</option>
+                                    <option>สารเคมี</option>
+
+
+                                </select>
+                                <!--</div>-->
+                            </div>
+                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group col-md-4 col-sm-4 col-xs-12">
+                                    <label for="customer">กว้าง</label>
+                                    <input type="number" class="form-control" id="wid" placeholder="ซม." required>
+
+                                </div>
+                                <div class="form-group col-md-4 col-sm-4 col-xs-12">
+                                    <label for="customer">ยาว</label>
+
+                                    <input type="number" class="form-control" id="len" placeholder="ซม." required>
+
+                                </div>
+                                <div class="form-group col-md-4 col-sm-4 col-xs-12">
+                                    <label for="customer">สูง</label>
+
+                                    <input type="number" class="form-control" id="hei" placeholder="ซม." required>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-3 col-sm-3 col-xs-12">
+                                <label for="customer">น้ำหนัก</label>
+                                <input type="number" class="form-control" id="wei" placeholder="kg" required>
+
+                            </div>
+
+
+                            <div class="form-group col-md-5 col-sm-5 col-xs-12" style="padding-right:0px">
+                                <label for="dateAdded">วันที่ส่งของ</label>
+                                <div class="dateSelect">
+                                    <div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
+                                        <input id="ship_date" type="text" class="form-control" placeholder="mm/dd/yyyy">
+                                        <div class="input-group-addon">
+                                            <i class="icon-listy icon-calendar"></i>
+                                        </div>
+
+                                        <!--<div class="input-group-addon">
+                                                <i class="icon-listy icon-calendar"></i>
+                                            </div>-->
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group col-md-4 col-sm-4 col-xs-12" style="padding-left:0px">
+                                <label for="dateAdded">เวลา</label>
+                                <input type="time" id="time" value="00:00" class="form-control" required />
+                            </div>
+
+                            <div class="form-group col-md-12 col-sm-12 col-xs-12" style="text-align:center">
+                                <button type="button" class="btn btn-primary" style="text-align:center" onclick="myFunction()"> ค้นหา </button>
+                            </div>
+                        </form>
+
+                        <!--End search form-->
+                        <!--Result-->
+                        <div id="Result" class="col-sm-12 col-xs-12" style="display:none">
+                            <div class="panel panel-default panel-card">
+                                <div class="panel-heading" style="font-weight:bold;color:deepskyblue">
+                                    <button type="button" class="btn btn-primary" style="text-align:center" onclick="return1()">
+                                        << กลับ </button>
+                                            รถที่วิ่งผ่านทางเดียวกับคุณ
+                                            <!--<span class="label label-primary"> </span>-->
+
+                                </div>
+                                <script>
+                                    function return1(name) {
+                                        var a = document.getElementById("Search_Form");
+                                        var b = document.getElementById("Result");
+
+                                        a.style.display = "list-item";
+                                        b.style.display = "none";
+                                    }
+
+                                </script>
+                                
+                            </div>
+
+                        </div>
+                        <!--End result tab-->
+                        <!--Shipment information-->
+                        <form id="shipment_info" class="form-group" style="display:none">
+
+                            <div id="company" class="panel-heading" style="font-weight:bold;color:deepskyblue">
+                                <!--<span class="label label-primary"> </span>-->
+                            </div>
+                            <!--<div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                    <label for="orderId">ต้นทาง</label>
+
+                                    <input type="text" class="form-control" id="start_1" placeholder="Location" readonly>
+
+                                </div>
+                                <div class="form-group col-md-9 col-sm-12 col-xs-12">
+
+                                    <input type="hidden" class="form-control" id="start1" placeholder="ต้นทาง" readonly>
+                                </div>
+                                <div class="form-group col-md-9 col-sm-12 col-xs-12">
+                                    <label for="orderStatus">ปลายทาง</label>
+                                    <input type="text" class="form-control" id="end_1"  placeholder="ปลายทาง" readonly>
+                                </div>
+
+                                <div class="form-group col-md-3 col-sm-12 col-xs-3">
+                                    <label for="distant">(km)</label>
+                                    <input readonly type="text" class="form-control" id="distant_1" placeholder="กม">
+                                </div>-->
+                            <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                <label for="orderStatus">เลือกประเภทรถ</label>
+                                <input type="text" class="form-control" id="car_1" placeholder="รถ" readonly>
+                            </div>
+                            <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                <label for="orderStatus">เลือกประเภทสินค้า</label>
+                                <input type="text" class="form-control" id="good_1" placeholder="ประเภทสินค้า" readonly>
+                            </div>
+                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group col-md-4 col-sm-4 col-xs-12">
+                                    <label for="customer">กว้าง(ซม)</label>
+                                    <input type="number" class="form-control" id="wid_1" placeholder="ซม." required>
+
+                                </div>
+                                <div class="form-group col-md-4 col-sm-4 col-xs-12">
+                                    <label for="customer">ยาว(ซม)</label>
+
+                                    <input type="number" class="form-control" id="len_1" placeholder="ซม.">
+
+                                </div>
+                                <div class="form-group col-md-4 col-sm-4 col-xs-12">
+                                    <label for="customer">สูง(ซม)</label>
+
+                                    <input type="number" class="form-control" id="hei_1" placeholder="ซม.">
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-3 col-sm-3 col-xs-12">
+                                <label for="customer">น้ำหนัก</label>
+                                <input type="number" class="form-control" id="wei_1" placeholder="กิโลกรัม" required>
+
+                            </div>
+
+
+                            <div class="form-group col-md-5 col-sm-5 col-xs-12" style="padding-right:0px">
+                                <label for="dateAdded">วันที่ส่งของ</label>
+                                <div class="dateSelect">
+                                    <div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
+                                        <input id="ship_date1" type="text" class="form-control" placeholder="mm/dd/yyyy" required>
+                                        <div class="input-group-addon">
+                                            <i class="icon-listy icon-calendar"></i>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-4 col-sm-4 col-xs-12" style="padding-left:0px">
+                                <label for="dateAdded">เวลา</label>
+                                <input type="time" id="time_1" value="00:00" class="form-control" required />
+                            </div>
+                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                <label for="dateAdded">รูปสินค้า</label>
+                            </div>
+
+                            <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                <input type="file" id="files" multiple />
+                                <div class="imageUploader text-center">
+                                    <div class="file-upload">
+
+
+                                        <output id="list"></output>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group col-md-12 col-sm-12 col-xs-12" style="text-align:center">
+                                <button type="button" class="btn btn-primary" style="text-align:center" onclick="myFunction2()"> ยืนยัน </button>
+                            </div>
+
+                        </form>
+                        <!--End Shipment Info-->
+
+                        <!--Start Contact info-->
+                        <form id="Contact_info" class="form-group" style="display:none" action="Search - Result.html" method="">
+
+
+
+
+                            <div class="form-group col-md-10 col-md-offset-1 col-sm-10 col-xs-12">
+                                <h4 class="card-title">ผู้ส่งของ</h4>
+                                <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                    <input type="text" class="form-control" id="sender_name" onchange="initMap()" placeholder="ชื่อ">
+
+                                </div>
+                                <!--<div class="form-group col-md-12 col-sm-12 col-xs-12">
+
+
+                                        <input type="text" class="form-control" id="start" onchange="initMap()" placeholder="นามสกุล">
+
+                                    </div>-->
+                                <div class="form-group col-md-12 col-sm-12 col-xs-12">
+
+                                    <input type="text" class="form-control" id="sender_contact" onchange="initMap()" placeholder="โทร">
+
+                                </div>
+                            </div>
+                            <div class="form-group col-md-10 col-md-offset-1 col-sm-10 col-xs-12">
+                                <h4 class="card-title">ผู้รับของ</h4>
+                                <div class="form-group col-md-12 col-sm-12 col-xs-12">
+
+
+                                    <input type="text" class="form-control" id="rcv_name" onchange="initMap()" placeholder="ชื่อ">
+
+                                </div>
+                                <!--<div class="form-group col-md-12 col-sm-12 col-xs-12">
+
+
+                                        <input type="text" class="form-control" id="rcv_surname" onchange="initMap()" placeholder="นามสกุล">
+
+                                    </div>-->
+                                <div class="form-group col-md-12 col-sm-12 col-xs-12">
+
+                                    <input type="text" class="form-control" id="rcv_contact" onchange="initMap()" placeholder="โทร">
+
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-12 col-sm-12 col-xs-12" style="text-align:center">
+                                <button type="button" class="btn btn-primary" style="text-align:center" onclick="myFunction3()"> ยืนยัน </button>
+                            </div>
+
+                        </form>
+                        <!--End Contact info-->
+                        <script>
+                            function myFunction() {
+
+                                var a = document.getElementById("Search_Form");
+                                var b = document.getElementById("Result");
+                                var c = document.getElementById("shipment_info");
+                                var d = document.getElementById("Contact_info");
+
+                                if (a.style.display === "none") {
+                                    //x.style.display = "block";
+                                    b.style.display = "list-item";
+                                } else {
+                                    a.style.display = "none";
+                                    b.style.display = "block";
+                                    //var x = document.getElementById("good").selectedIndex;
+                                    //var y = document.getElementById("good").options;
+                                    //var j3 = document.getElementById("good_1");
+                                    //alert("Index: " + y[x].index + " is " + y[x].text);
+                                    $('html, body').animate({ scrollTop: 0 }, 'fast');
+                                }
+                            }
+                        </script>
+                        <script>
+                            function myFunction1(name) {
+
+
+                                var b = document.getElementById("Result");
+                                var c = document.getElementById("shipment_info");
+                                var d = document.getElementById("Contact_info");
+
+                                if (b.style.display === "none") {
+                                    //x.style.display = "block";
+                                    c.style.display = "list-item";
+
+                                } else {
+                                    b.style.display = "none";
+                                    c.style.display = "block";
+                                    //var n1 = document.getElementById("start");
+                                    //var n2 = document.getElementById("start_1");
+                                    //n2.value = n1.value;
+                                    //var e1 = document.getElementById("end");
+                                    //var e2 = document.getElementById("end_1");
+                                    //e2.value = e1.value;
+                                    //var d1 = document.getElementById("distant");
+                                    //var d2 = document.getElementById("distant_1");
+                                    //d2.value = d1.value;
+                                    var e1 = document.getElementById("wid");
+                                    var e2 = document.getElementById("wid_1");
+                                    e2.value = e1.value;
+                                    var f1 = document.getElementById("len");
+                                    var f2 = document.getElementById("len_1");
+                                    f2.value = f1.value;
+                                    var g1 = document.getElementById("hei");
+                                    var g2 = document.getElementById("hei_1");
+                                    g2.value = g1.value;
+                                    var h1 = document.getElementById("wei");
+                                    var h2 = document.getElementById("wei_1");
+                                    h2.value = h1.value;
+                                    var i1 = document.getElementById("car").selectedIndex;
+                                    var i2 = document.getElementById("car").options;
+                                    var i3 = document.getElementById("car_1");
+                                    i3.value = i2[i1].text;
+                                    //alert("Index: " + i1.index + " is " + i2[i1].text);
+                                    var x = document.getElementById("good").selectedIndex;
+                                    var y = document.getElementById("good").options;
+                                    var j3 = document.getElementById("good_1");
+
+                                    j3.value = y[x].text;
+                                    var date1 = document.getElementById("ship_date")
+                                    var date2 = document.getElementById("ship_date1")
+
+                                    date2.value = date1.value;
+                                    var time1 = document.getElementById("time")
+                                    var time2 = document.getElementById("time_1")
+
+                                    time2.value = time1.value;
+                                    document.getElementById("company").innerHTML = name;
+                                    $('html, body').animate({ scrollTop: 0 }, 'fast');
+                                }
+                            }
+                        </script>
+
+                        <script>
+                            function myFunction2() {
+                                var x = document.getElementById("shipment_info");
+                                var y = document.getElementById("Contact_info");
+                                if (x.style.display === "none") {
+                                    //x.style.display = "block";
+                                    y.style.display = "list-item";
+                                } else {
+                                    x.style.display = "none";
+                                    y.style.display = "list-item";
+                                    $('html, body').animate({ scrollTop: 0 }, 'fast');
+
+                                }
+                            }
+                        </script>
+                        <script>
+                            function myFunction3() {
+                                $("#loginModal").modal();
+                            }
+                        </script>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- MAP SECTION -->
+        <section class="clearfix p0 col-sm-8">
+            <div id="map-canvas"></div>
+        </section>
+
+</body>
+
+
+
+
+<!-- FOOTER -->
+<footer class="footerWhite">
+    <!-- FOOTER INFO -->
+    <div class="clearfix footerInfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7 col-xs-12">
+                    <div class="footerText">
+                        <a href="index.html" class="footerLogo">
+                            <img src="img/logo-blue.png" alt="Footer Logo">
+                        </a>
+                        <p> ถูกกว่า สะดวกกว่า สินค้าปลอดภัย</p>
+                        <ul class="list-styled list-contact">
+                            <li>
+                                <i class="fa fa-phone" aria-hidden="true"></i>[88] 657 524 332</li>
+                            <li>
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                                <a href="#">info@wesameway.com</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-xs-12">
+                    <div class="footerInfoTitle">
+                        <h4>Links</h4>
+                    </div>
+                    <div class="useLink">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="dashboard.html">หน้าสมาชิก</a>
+                            </li>
+                            <li>
+                                <a href="sign-up.html">หน้าพาร์ทเนอร์</a>
+                            </li>
+                            <li>
+                                <a href="login.html">สมัครสมาชิก</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-2 col-xs-12">
+                    <div class="footerInfoTitle">
+                        <h4>Company</h4>
+                    </div>
+                    <div class="useLink">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="contact-us.html">ติดต่อเรา</a>
+                            </li>
+                            <li>
+                                <a href="terms-of-services.html">ข้อตกลงและเงื่อนไข</a>
+                            </li>
+                            <li>
+                                <a href="how-it-works.html">การใช้งาน</a>
+                            </li>
+                            <li>
+                                <a href="payment-process.html">การชำระเงิน</a>
+                            </li>
+                            <li>
+                                <a href="pricing-table.html">เราแตกต่างจากที่อื่นอย่างไร</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COPY RIGHT -->
+    <div class="clearfix copyRight">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="copyRightWrapper">
+                        <div class="row">
+                            <div class="col-sm-5 col-sm-push-7 col-xs-12">
+                                <ul class="list-inline socialLink">
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-7 col-sm-pull-5 col-xs-12">
+                                <div class="copyRightText">
+                                    <p>Copyright &copy; 2017. All Rights Reserved by
+                                        <a href="http://www.wesameway.com/" target="_blank">We Same Way</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+
+<!-- LOGIN  MODAL -->
+<div id="loginModal" tabindex="-1" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">กรุณา Log in เพื่อ เข้าสู่ระบบ</h4>
+            </div>
+            <div class="modal-body">
+                <form class="loginForm" action="payment-process.html" method="">
+                    <div class="form-group">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                        <input type="email" class="form-control" id="email" placeholder="อีเมลล์หรือเบอร์โทรศัพท์">
+                    </div>
+                    <div class="form-group">
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+                        <input type="password" class="form-control" id="pwd" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">เข้าสู่ระบบ</button>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Remember me</label>
+                        <a href="#" class="pull-right link">ลืมพาร์ดเวิอร์ด?</a>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <p>ยังไม่ได้เป็นสมาชิก?
+                    <a href="#" class="link">ลงทะเบียน</a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- JAVASCRIPTS -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="plugins/smoothscroll/SmoothScroll.min.js"></script>
+<script src="plugins/waypoints/waypoints.min.js"></script>
+<script src="plugins/counter-up/jquery.counterup.min.js"></script>
+<script src="plugins/datepicker/bootstrap-datepicker.min.js"></script>
+<script src="plugins/selectbox/jquery.selectbox-0.1.3.min.js"></script>
+<script src="plugins/rwdtable/js/rwd-table.min.js"></script>
+<script src="plugins/owl-carousel/owl.carousel.min.js"></script>
+<script src="plugins/isotope/isotope.min.js"></script>
+<script src="plugins/fancybox/jquery.fancybox.pack.js"></script>
+<script src="plugins/isotope/isotope-triger.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEDfNcQRmKQEyulDN8nGWjLYPm8s4YB58&callback=initMap&language=th"></script>
+<script src="javascript/map.js"></script>
+
+<script src="javascript/custom.js"></script>
+
+<script>
+    function handleFileSelect(evt) {
+        var files = evt.target.files;
+
+        // Loop through the FileList and render image files as thumbnails.
+        for (var i = 0, f; f = files[i]; i++) {
+
+            // Only process image files.
+            if (!f.type.match('image.*')) {
+                continue;
+            }
+
+            var reader = new FileReader();
+
+            // Closure to capture the file information.
+            reader.onload = (function (theFile) {
+                return function (e) {
+                    // Render thumbnail.
+                    var span = document.createElement('span');
+                    span.innerHTML =
+                        [
+                            '<img class=\"pip\" style="height: 75px; border: 1px solid #000; margin: 5px" src="',
+                            e.target.result,
+                            '" title="', escape(theFile.name),
+                            '"/>'
+                        ].join('');
+
+
+
+                    document.getElementById('list').insertBefore(span, null);
+                };
+            })(f);
+
+            // Read in the image file as a data URL.
+            reader.readAsDataURL(f);
+        }
+    }
+
+    document.getElementById('files').addEventListener('change', handleFileSelect, false);
+</script>
+<script>
+    var x = document.getElementById("demo");
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function showPosition(position) {
+        var myLatlng1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+        var mapOptions = {
+            zoom: 14,
+            center: myLatlng1,
+            map: map,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
+
+        var image = 'img/map/Marker.png';
+        var beachMarker = new google.maps.Marker({
+            position: myLatlng1,
+            map: map,
+            icon: image
+        });
+
+        var geocoder;
+        geocoder = new google.maps.Geocoder();
+
+        geocoder.geocode(
+            { 'latLng': myLatlng1 },
+            function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    if (results[0]) {
+                        var add = results[0].formatted_address;
+                        var value = add.split(" ");
+
+                        count = value.length;
+                        country = value[count - 1];
+                        state = value[count - 2];
+                        city = value[count - 3];
+                        tumbon = value[count - 4];
+                        kwang = value[count - 5];
+                        kwang1 = value[count - 6];
+                        kwang2 = value[count - 7];
+                        document.getElementById('start1').value = kwang2 + ' ' + kwang1 + ' ' + kwang + ' ' + tumbon + ' ' + city + ' ' + state;
+                        document.getElementById('start').value = add;
+                    }
+                    else {
+                        alert("หาที่อยู่ไม่เจอ");
+                    }
+                }
+                else {
+                    alert("Geocoder failed due to: " + status);
+                }
+            }
+        );
+    }
+
+
+
+
+
+
+    //To use this code on your website, get a free API key from Google.
+    //Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+
+    function showError(error) {
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                x.innerHTML = "User denied the request for Geolocation."
+                break;
+            case error.POSITION_UNAVAILABLE:
+                x.innerHTML = "Location information is unavailable."
+                break;
+            case error.TIMEOUT:
+                x.innerHTML = "The request to get user location timed out."
+                break;
+            case error.UNKNOWN_ERROR:
+                x.innerHTML = "An unknown error occurred."
+                break;
+        }
+    }
+</script>
+
+
+<script>
+    function initMap() {
+
+        alert(document.getElementById('start').value)
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer({
+            draggable: true,
+            map: map,
+            panel: document.getElementById('right-panel')
+        });
+        directionsDisplay.addListener('directions_changed', function () {
+            computeTotalDistance(directionsDisplay.getDirections());
+            document.getElementById('end1').value = directionsService.route.destination.value;
+        });
+        var map = new google.maps.Map(document.getElementById('map-canvas'), {
+            zoom: 7
+
+        });
+
+        directionsDisplay.setMap(map);
+        directionsService.route({
+            origin: document.getElementById('start').value,
+            destination: document.getElementById('end').value,
+            travelMode: 'DRIVING',
+
+        }, function (response, status) {
+            if (status === 'OK') {
+                directionsDisplay.setDirections(response);
+            }
+            else {
+                window.alert('Directions request failed due to ' + status);
+            }
+        });
+    }
+
+    function computeTotalDistance(result) {
+        var total = 0;
+
+        var myroute = result.routes[0];
+        for (var i = 0; i < myroute.legs.length; i++) {
+            total += myroute.legs[i].distance.value;
+            var endaddress = myroute.legs[i].end_address;
+            var startaddress = myroute.legs[i].start_address;
+        }
+
+        total = Math.round(total / 1000);
+        document.getElementById('distant').value = total;
+        document.getElementById('start').value = startaddress;
+        document.getElementById('end').value = endaddress;
+
+
+        //document.getElementById('start1').value = "tetstsdtats";
+    }
+</script>
+
+<script>
+        // $(document).ready(function () {
+        //     initMapOnload();
+        // })
+</script>
+
+
+</html>
