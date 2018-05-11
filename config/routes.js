@@ -61,16 +61,24 @@ module.exports.routes = {
     view: 'index'
   },
 
+  // 'get /home': {
+  //   controller: 'home',
+  //   action: 'index'
+  // },
+
+
 
   '/dashboard': { view: 'dashboard' },
-
+  '/': { view: 'index' },
+  '/home': { view: 'homepage' },
+  '/how-it-works': { view: 'how-it-works' },
 
   'get /district/province/:pid': {
     controller: 'District',
     action: 'findByProvince'
   },
 
-  
+
   'post /partner': {
     controller: 'partner',
     action: 'create'
@@ -140,7 +148,7 @@ module.exports.routes = {
     controller: 'routeinfo',
     action: 'index'
   },
-  
+
   'get /routeinfo/:id': {
     controller: 'routeinfo',
     action: 'findByID'
@@ -155,7 +163,7 @@ module.exports.routes = {
     controller: 'routeinfo',
     action: 'find'
   },
-  
+
 
   'get /truck/cartype/:cid/partner/:pid': {
     controller: 'truck',
@@ -181,6 +189,8 @@ module.exports.routes = {
 
   '/profile': { view: 'profile' },
 
+
+
   'get /partner-signup': 'PartnerController.index',
 
   // 'post /partner-signup': 'PartnerController.signup',
@@ -190,8 +200,9 @@ module.exports.routes = {
   // 'POST /search/:start/:stop': 'SearchController.index',
   // '/search': {view: 'search'},
 
-  'POST /search/:start_route/:end_route': { controller: "Search", action: "index" },
+  'POST /search': { controller: "Search", action: "index" },
 
+  //'POST /search/partner/:id': { controller: "Search", action: "partner" },
   // 'POST /search': 'SearchController.index1',
 
   /***************************************************************************

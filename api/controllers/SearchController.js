@@ -9,13 +9,14 @@ module.exports = {
 
     index: function (req, res) {
         let responses = {
-            start_route: req.param('start_route'),
-            end_route: req.param('end_route')
+            by: req.param('by'),
+            startpoint: req.param('startpoint'),
+            endpoint: req.param('endpoint')
         }
 
 
         console.log(responses)
-        return res.view("search", responses)
+        return res.view("search_route", responses)
     },
 };
 
