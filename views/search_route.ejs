@@ -42,7 +42,7 @@
 
 </head>
 
-<body class="body-wrapper" onload="initMap();">
+<body class="body-wrapper" onload="initMapOnLoad();">
     <div class="page-loader" style="background: url(img/preloader.gif) center no-repeat #fff;"></div>
     <div class="main-wrapper">
         <!-- HEADER -->
@@ -1026,7 +1026,7 @@ function showError(error) {
 
 
     <script>
-        function initMap(){
+        function initMapOnLoad(){
             
         var directionsService = new google.maps.DirectionsService;
         var directionsDisplay = new google.maps.DirectionsRenderer({
@@ -1087,7 +1087,7 @@ function showError(error) {
         });
             }
         });
-        
+
         // end start postal code
         geocoder.geocode({ 'address': end9 }, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
@@ -1141,6 +1141,245 @@ function showError(error) {
 
      
     </script>
+
+
+ <script>
+        function initMap() {
+            
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer({
+            draggable: true,
+            map: map,
+            panel: document.getElementById('right-panel')
+        });
+        directionsDisplay.addListener('directions_changed', function () {
+            computeTotalDistance(directionsDisplay.getDirections());
+            document.getElementById('end1').value = directionsService.route.destination.value;
+        });
+        var map = new google.maps.Map(document.getElementById('map-canvas'), {
+          zoom: 7
+      
+        });
+
+        directionsDisplay.setMap(map);
+        directionsService.route({
+        origin: document.getElementById('start').value,
+                destination: document.getElementById('end').value,
+                travelMode: 'DRIVING',
+          
+            }, function(response, status) {
+                if (status === 'OK') {
+                    directionsDisplay.setDirections(response);
+                  
+
+                }
+                else {
+                    window.alert('Directions request failed due to ' + status);
+                }
+            });
+      }
+        
+      function computeTotalDistance(result) {
+          var total = 0;
+         
+          var myroute = result.routes[0];
+          for (var i = 0; i < myroute.legs.length; i++) {
+              total += myroute.legs[i].distance.value;
+              var endaddress = myroute.legs[i].end_address;
+              var startaddress = myroute.legs[i].start_address;
+          }
+          
+          total = Math.round(total / 1000);
+          document.getElementById('distant').value = total;
+          document.getElementById('start').value = startaddress;
+          document.getElementById('end').value = endaddress;
+
+         
+          //document.getElementById('start1').value = "tetstsdtats";
+      }
+      
+
+
+
+    var geocoder = new google.maps.Geocoder();
+
+    var start9 = document.getElementById("start").value;
+    var end9 = document.getElementById("end").value;
+
+    //alert(start9+":"+end9)
+
+    geocoder.geocode( { 'address': start9}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+
+            var start9_lat = results[0].geometry.location.lat();
+            var start9_lng = results[0].geometry.location.lng();
+            var StartLatlng1 = new google.maps.LatLng(start9_lat, start9_lng);
+            geocoder.geocode(
+    { 'latLng': StartLatlng1 },
+    function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+
+            var add = results[0].formatted_address;
+            var value = add.split(" ");
+
+            count = value.length;
+
+            start_post = value[count - 2]; 
+            document.getElementById("startpostcode").value = start_post;
+        }
+    });
+        }
+    });
+
+    // end start postal code
+    geocoder.geocode({ 'address': end9 }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+                                                    
+            var end9_lat = results[0].geometry.location.lat();
+            var end9_lng = results[0].geometry.location.lng();
+
+            var EndLatlng1 = new google.maps.LatLng(end9_lat, end9_lng);
+            geocoder.geocode(
+        { 'latLng': EndLatlng1 },
+        function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                var add = results[0].formatted_address;
+                var value = add.split(" ");
+
+                count = value.length;
+
+                end_post = value[count - 2];
+                document.getElementById("endpostcode").value = end_post;
+                //alert("http://www.vsameway.com:7777/routename" + "/" + start_post + "/" + end_post)
+
+            }
+        });
+    }
+    else {
+        alert("Geocode was not successful for the following reason: " + status);
+    }
+});
+    </script>
+
+<script>
+    function initMap() {
+        
+    var directionsService = new google.maps.DirectionsService;
+    var directionsDisplay = new google.maps.DirectionsRenderer({
+        draggable: true,
+        map: map,
+        panel: document.getElementById('right-panel')
+    });
+    directionsDisplay.addListener('directions_changed', function () {
+        computeTotalDistance(directionsDisplay.getDirections());
+        //document.getElementById('end1').value = directionsService.route.destination.value;
+    });
+    var map = new google.maps.Map(document.getElementById('map-canvas'), {
+      zoom: 7
+  
+    });
+
+    directionsDisplay.setMap(map);
+    directionsService.route({
+    origin: document.getElementById('start').value,
+            destination: document.getElementById('end').value,
+            travelMode: 'DRIVING',
+      
+        }, function(response, status) {
+            if (status === 'OK') {
+                directionsDisplay.setDirections(response);
+              
+
+            }
+            else {
+                window.alert('Directions request failed due to ' + status);
+            }
+        });
+
+
+
+    var geocoder = new google.maps.Geocoder();
+
+var start9 = document.getElementById("start").value;
+var end9 = document.getElementById("end").value;
+
+//alert(start9+":"+end9)
+
+geocoder.geocode( { 'address': start9}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+
+        var start9_lat = results[0].geometry.location.lat();
+        var start9_lng = results[0].geometry.location.lng();
+        var StartLatlng1 = new google.maps.LatLng(start9_lat, start9_lng);
+        geocoder.geocode(
+        { 'latLng': StartLatlng1 },
+        function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+
+                var add = results[0].formatted_address;
+                var value = add.split(" ");
+
+                count = value.length;
+
+                start_post = value[count - 2]; 
+                document.getElementById("startpostcode").value = start_post;
+            }
+        });
+    }
+});
+
+    // end start postal code
+    geocoder.geocode({ 'address': end9 }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+                                                    
+            var end9_lat = results[0].geometry.location.lat();
+            var end9_lng = results[0].geometry.location.lng();
+
+            var EndLatlng1 = new google.maps.LatLng(end9_lat, end9_lng);
+            geocoder.geocode(
+        { 'latLng': EndLatlng1 },
+            function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    var add = results[0].formatted_address;
+                    var value = add.split(" ");
+                    console.log(value)
+                    count = value.length;
+
+                    end_post = value[count - 2];
+                    document.getElementById("endpostcode").value = end_post;
+                    
+
+                }
+            });
+        }else {
+            alert("Geocode was not successful for the following reason: " + status);
+        }
+    });
+            
+  }
+    
+  function computeTotalDistance(result) {
+      var total = 0;
+     
+      var myroute = result.routes[0];
+      for (var i = 0; i < myroute.legs.length; i++) {
+          total += myroute.legs[i].distance.value;
+          var endaddress = myroute.legs[i].end_address;
+          var startaddress = myroute.legs[i].start_address;
+      }
+      
+      total = Math.round(total / 1000);
+      document.getElementById('distant').value = total;
+      document.getElementById('start').value = startaddress;
+      document.getElementById('end').value = endaddress;
+
+     
+      //document.getElementById('start1').value = "tetstsdtats";
+  }
+  
+
+ 
+</script>
 </body>
 
 </html>
