@@ -13,7 +13,7 @@ module.exports = {
         if (searchBy == "route"){
             this.byRoute(req, res)
         }else if(searchBy == "partner"){
-
+            this.byPartner(req, res)
         }
 
     },
