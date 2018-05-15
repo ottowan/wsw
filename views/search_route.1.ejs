@@ -42,7 +42,7 @@
 
 </head>
 
-<body class="body-wrapper" onload="initMap();">
+<body class="body-wrapper" onload="initMapOnload();">
     <div class="page-loader" style="background: url(img/preloader.gif) center no-repeat #fff;"></div>
     <div class="main-wrapper">
         <!-- HEADER -->
@@ -117,7 +117,6 @@
                                 <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                     <label for="orderId">ต้นทาง</label>
                                     <div class="input-group">
-                                        <input type="hidden" class="form-control" id="startpostcode" name="startpostcode" placeholder="ต้นทาง" required>
                                         <input type="text" class="form-control" value="<%= startpoint%>" id="start" onchange="initMap()" placeholder="Location" required>
                                         <span class="input-group-btn">
                                             <button class="btn btn-secondary" type="button" onclick="getLocation()" onchange="initMap()" style="width:50px"><i class="icon-listy icon-target" action="Search - Result.html" aria-hidden="true"></i></button>
@@ -131,7 +130,6 @@
                                 </div>
                                 <div class="form-group col-md-9 col-sm-12 col-xs-12">
                                     <label for="orderStatus">ปลายทาง</label>
-                                    <input type="hidden" class="form-control" id="endpostcode" name="endpostcode" placeholder="ปลายทาง">
                                     <input type="text" class="form-control" id="end" value="<%= endpoint%>" onchange="initMap()" placeholder="ปลายทาง" required>
                                 </div>
 
@@ -498,7 +496,6 @@
                                     var c = document.getElementById("shipment_info");
                                     var d = document.getElementById("Contact_info");
 
-
                                     if (a.style.display === "none") {
                                         //x.style.display = "block";
                                         b.style.display = "list-item";
@@ -532,8 +529,7 @@
 
                                                    count = value.length;
 
-                                                   start_post = value[count - 2]; 
-                                                   document.getElementById("startpostcode").value = start_post;
+                                                   start_post = value[count - 2];
                                                }
                                            });
                                             }
@@ -556,9 +552,10 @@
                                                            count = value.length;
 
                                                            end_post = value[count - 2];
-                                                           document.getElementById("endpostcode").value = end_post;
-                                                           //alert("http://www.vsameway.com:7777/routename" + "/" + start_post + "/" + end_post)
 
+                                                           alert("http://www.vsameway.com:7777/routename" + "/" + start_post + "/" + end_post)
+
+                                                          
                                                        }
                                                    });
                                                     }
@@ -567,34 +564,41 @@
                                                     }
                                                 });
 
+                                                    //document.getElementById('start1').value = kwang2 + ' ' + kwang1 + ' ' + kwang + ' ' + tumbon + ' ' + city + ' ' + state;
+                                                    //document.getElementById('start').value = add;
+                                              
+                                               
                                             } 
-                                            var start_point = document.getElementById("startpostcode").value
-                                            var end_point = document.getElementById("endpostcode").value
-                                            alert(start_point+":"+end_point)
-                                            var url = "http://localhost:1337/search"
-                                            var params = new URLSearchParams("by=partner&startpoint="+start_point+"&endpoint="+end_point)
-                                            fetch(url, {
-                                                method: 'POST',
-                                                body: params
-                                            }).then(function(result){
-                                                console.log(result.json())
-                                            })
-
+                                                                                          
+                                //else {
+                                //                alert("Geocode was not successful for the following reason: " + status);
+                                //}
                                             
-                                    // $.post("http://www.vsameway.com:7777/routename"+"/"+start9+"/"+start9 , function (result,status) {
-                                    //     var output ="";
-                                    //         alert(result + status);
-                                    //         for (i = 0; i <= result.length;i++)
-                                    //         {
-                                                
-                                    //         }
-                                    //     });
-
-                                    // $.get("http://www.vsameway.com:7777/routename/56110/63000", function (data) {
                                       
-                                    //     alert(data[0].start_name);
+                                       
+                                        //alert("http://www.vsameway.com:7777/routename" + "/" + start_post + "/" + end_post)
+                                             
+                                        $.post("http://www.vsameway.com:7777/routename"+"/"+start9+"/"+start9 , function (result,status) {
+                                            var output ="";
+                                                   alert(result + status);
+                                                   for (i = 0; i <= result.length;i++)
+                                                   {
+                                                      
+                                                   }
+                                                });
+                                        
+                                       
 
-                                    // });
+                                       
+                                    
+
+                                  
+
+                                    $.get("http://www.vsameway.com:7777/routename/56110/63000", function (data) {
+                                      
+                                        alert(data[0].start_name);
+
+                                    });
                                 }
                             </script>
 
@@ -834,7 +838,7 @@
     <script src="plugins/isotope/isotope.min.js"></script>
     <script src="plugins/fancybox/jquery.fancybox.pack.js"></script>
     <script src="plugins/isotope/isotope-triger.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7_JFbQgIarSxSuPVcwJvkT0wEmJlUSZw&callback=initMap&language=th" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7_JFbQgIarSxSuPVcwJvkT0wEmJlUSZw&;callback=initMap&language=th" async defer></script>
     <script src="plugins/map/js/rich-marker.js"></script>
     <script src="plugins/map/js/infobox_packed.js"></script>
     <script src="javascript/map.js"></script>
@@ -1023,6 +1027,40 @@ function showError(error) {
         </script>
 
 
+<script>
+    var directionsDisplay;
+    var directionsService;
+    var map;
+
+    function initMapOnload() {
+      directionsService = new google.maps.DirectionsService;
+      var chicago = new google.maps.LatLng(41.850033, -87.6500523);
+      var map = new google.maps.Map(document.getElementById('map-canvas'), {
+        zoom: 8,
+        center: chicago
+      });
+      directionsDisplay = new google.maps.DirectionsRenderer({
+        map: map
+      });
+      calcRoute();
+    }
+
+    function calcRoute() {
+      var start = "cambridge, ma";
+      var end = "boston, ma";
+      var request = {
+        origin: start,
+        destination: end,
+        travelMode: google.maps.TravelMode.DRIVING
+      };
+      directionsService.route(request, function(result, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+          directionsDisplay.setDirections(result);
+        }
+      });
+    };
+  </script>
+
     <script>
         function initMap(){
             
@@ -1051,6 +1089,7 @@ function showError(error) {
             }, function(response, status) {
                 if (status === 'OK') {
                     directionsDisplay.setDirections(response);
+                  alert(status)
                 }
                 else {
                     window.alert('Directions request failed due to ' + status);

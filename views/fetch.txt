@@ -1,0 +1,52 @@
+
+var url = "http://localhost:1337/search"
+const rawResponse = await fetch('https://httpbin.org/post', {
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({a: 1, b: 'Textual content'})
+});
+const content = await rawResponse.json();
+
+
+fetch("/url-to-post",{
+        method: "POST",
+        //what ever data you want to post with key value pair        
+        body: "name=manas&age=20",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        }).then( (response) => { 
+        //do something awesome that makes the world a better place
+});
+
+
+https://pranayrauthu.github.io/fetcher/
+
+
+
+Do not set the content-type header.
+
+// Build formData object.
+let formData = new FormData();
+formData.append('name', 'John');
+formData.append('password', 'John123');
+
+fetch("api/SampleData",
+    {
+        body: formData,
+        method: "post"
+    });
+
+
+fetch("/path/to/server", {
+  method:"POST"
+, body:new URLSearchParams("email=test@example.com&password=pw")
+})
+
+<form>
+  <input name="email" value="test@example.com">
+  <input name="password" value="pw">
+  <input type="submit">
+</form>
