@@ -571,7 +571,11 @@
                                             var start_point = document.getElementById("startpostcode").value
                                             var end_point = document.getElementById("endpostcode").value
                                             //var url = "http://localhost:1337/search"
-                                            var url = window.location.protocol+"//"+window.location.hostname+":"+window.location.port+"/search"
+                                            if(window.location.port == 80)
+                                                var url = window.location.protocol+"//"+window.location.hostname+"/search"
+                                            else
+                                                var url = window.location.protocol+"//"+window.location.hostname+":"+window.location.port+"/search"
+
 
                                             alert(url+"\n"+start_point+":"+end_point)
                                             var params = new URLSearchParams("by=partner&startpoint="+start_point+"&endpoint="+end_point)
