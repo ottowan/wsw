@@ -1,0 +1,24 @@
+module.exports = {
+
+  attributes: {
+    username: 'string',
+    password: 'string',
+    type: 'string',
+    firstName: 'string',
+    lastName: 'string',
+    fullName: function() {
+     return this.firstName + " " + this.lastName;
+    },
+    mobile: 'string',
+    avatar: 'string',
+    Unit: {model: 'unit'},
+    // Override the default toJSON method
+    toJSON: function() {
+      var obj = this.toObject();
+      delete obj.password;
+      if (typeof this.fullName === 'function')
+            obj.fullName = this.fullName();
+      return obj;
+    }
+  }
+};

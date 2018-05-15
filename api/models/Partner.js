@@ -76,5 +76,17 @@ module.exports = {
       type: 'string',
       columnName: 'password'
     }
+  },
+  // Override the default toJSON method
+  toJSON: function() {
+    var obj = this.toObject();
+    delete obj.password;
+    delete obj.username;
+    
+    return obj;
   }
-};
+}
+
+
+
+

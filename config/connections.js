@@ -56,16 +56,16 @@ module.exports.connections = {
   //   database: 'd3linyqx01lm02aq' //optional
   // },
 
-  wswMysqlServerLocal: {
-    adapter: 'sails-mysql',
-    host: '127.0.0.1',
-    user: 'root', //optional
-    password: 'root', //optional
-    database: 'wsw', //optional
-    timezone: 'utc'
-  },
+  // wswMysqlServer: {
+  //   adapter: 'sails-mysql',
+  //   host: '127.0.0.1',
+  //   user: 'root', //optional
+  //   password: 'root', //optional
+  //   database: 'wsw', //optional
+  //   timezone: 'utc'
+  // },
 
-  wswMysqlServer: {
+wswMysqlServer: {
     adapter: 'sails-mysql',
     host: 'a07yd3a6okcidwap.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
     user: 'vw4foujoeqvv5ao3', //optional

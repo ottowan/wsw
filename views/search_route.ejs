@@ -579,28 +579,18 @@
 
                                             alert(url+"\n"+start_point+":"+end_point)
                                             var params = new URLSearchParams("by=partner&startpoint="+start_point+"&endpoint="+end_point)
+
                                             fetch(url, {
                                                 method: 'POST',
                                                 body: params
-                                            }).then(function(result){
-                                                console.log(result.json())
+                                            }).then(function(response) {
+                                                return response.json();
+                                            })
+                                            .then(function(myJson) {
+                                                alert(JSON.stringify(myJson))
+                                                console.log(myJson);
                                             })
 
-                                            
-                                    // $.post("http://www.vsameway.com:7777/routename"+"/"+start9+"/"+start9 , function (result,status) {
-                                    //     var output ="";
-                                    //         alert(result + status);
-                                    //         for (i = 0; i <= result.length;i++)
-                                    //         {
-                                                
-                                    //         }
-                                    //     });
-
-                                    // $.get("http://www.vsameway.com:7777/routename/56110/63000", function (data) {
-                                      
-                                    //     alert(data[0].start_name);
-
-                                    // });
                                 }
                             </script>
 
